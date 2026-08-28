@@ -132,18 +132,29 @@ problem, so prefer fixing it locally.
 
 ## Repository protection
 
-The `CODEOWNERS` file only requests reviewers; it does not enforce them. To make review mandatory,
-add a branch protection (or ruleset) on `main` in **Settings → Branches**:
+`main` and `development` are both protected. `main` is the release branch;
+`development` is the day-to-day integration branch. Neither accepts direct pushes,
+force pushes, or deletion — all changes arrive through a pull request.
 
-- Require a pull request before merging
-- Require approvals (1+)
-- **Require review from Code Owners**
-- Require status checks to pass: `Lint, format & types`, `Tests`, `Build`, `Commit messages`,
-  `Gitleaks`
-- Require branches to be up to date before merging
+`main` additionally requires an approving review from a code owner, as declared in
+[`.github/CODEOWNERS`](.github/CODEOWNERS), and dismisses stale approvals when new commits
+are pushed.
 
-> **Before this works:** edit [`.github/CODEOWNERS`](.github/CODEOWNERS) and replace `@OWNER` with
-> your GitHub username or team. Owners need write access, or GitHub silently ignores the rule.
+Both branches require these checks to pass before merging:
+
+- `Lint, format & types`
+- `Tests`
+- `Build`
+- `Commit messages`
+- `Gitleaks`
+
+Branches must also be up to date with the base branch before merging.
+
+> **Working solo:** GitHub does not let you approve your own pull request, so the review
+> requirement on `main` will block a single-maintainer PR. Repository admins can still merge,
+> because admin enforcement is deliberately left off. Target `development` for everyday work,
+> or drop the approval count to `0` in **Settings → Branches** until there is a second
+> maintainer.
 
 ## Secret scanning
 
