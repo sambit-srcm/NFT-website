@@ -1,0 +1,11 @@
+# Format and lint only what is staged.
+npx lint-staged
+
+# Block secrets before they ever reach a commit.
+if command -v gitleaks >/dev/null 2>&1; then
+  gitleaks protect --staged --redact --config .gitleaks.toml --verbose
+else
+  echo "⚠️  gitleaks not found — skipping local secret scan."
+  echo "   Install it with: brew install gitleaks"
+  echo "   CI will still scan this branch on push."
+fi
