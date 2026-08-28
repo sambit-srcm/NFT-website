@@ -70,7 +70,7 @@ Open [http://localhost:3000](http://localhost:3000).
 | `npm run lint:fix`      | ESLint with autofix                          |
 | `npm run format`        | Rewrite files with Prettier                  |
 | `npm run format:check`  | Fail if anything is unformatted (used by CI) |
-| `npm run typecheck`     | `tsc --noEmit`                               |
+| `npm run typecheck`     | Generate route types, then `tsc --noEmit`    |
 | `npm run test`          | Run the test suite once                      |
 | `npm run test:watch`    | Watch mode                                   |
 | `npm run test:coverage` | Tests with a coverage report                 |
