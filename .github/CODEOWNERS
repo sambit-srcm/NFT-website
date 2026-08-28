@@ -1,0 +1,20 @@
+# Code owners are requested for review automatically on every PR touching
+# a matching path. Combine with a branch protection rule on `main` that
+# requires review from Code Owners to make these reviewers mandatory.
+#
+# ⚠️  Replace @OWNER below with your GitHub username or team (e.g. @acme/web).
+#     Owners must have write access to the repo or the rule is silently ignored.
+
+# Default owner for everything in the repo.
+*                       @OWNER
+
+# Build, tooling and CI configuration.
+/.github/               @OWNER
+/.husky/                @OWNER
+/*.config.*             @OWNER
+/package.json           @OWNER
+/package-lock.json      @OWNER
+
+# Security-sensitive configuration.
+/.gitleaks.toml         @OWNER
+/.env.example           @OWNER

@@ -1,0 +1,23 @@
+# Gitleaks configuration
+# Docs: https://github.com/gitleaks/gitleaks#configuration
+title = "NFT Website secret scanning"
+
+# Start from the maintained upstream ruleset, then narrow it below.
+[extend]
+useDefault = true
+
+[allowlist]
+description = "Paths and values that are safe by construction"
+paths = [
+  '''package-lock\.json''',
+  '''(^|/)\.env\.example$''',
+  '''(^|/)public/''',
+  '''(^|/)node_modules/''',
+  '''(^|/)\.next/''',
+]
+regexes = [
+  # Placeholder values used in docs and examples.
+  '''(?i)(your|my|example|placeholder|changeme|dummy|test)[-_]?(api)?[-_]?(key|token|secret)''',
+  # Zero address / burn address commonly appears in NFT code.
+  '''0x0{40}''',
+]
