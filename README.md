@@ -150,11 +150,6 @@ Both branches require these checks to pass before merging:
 
 Branches must also be up to date with the base branch before merging.
 
-> **Working solo:** GitHub does not let you approve your own pull request, so the review
-> requirement on `main` will block a single-maintainer PR. Repository admins can still merge,
-> because admin enforcement is deliberately left off. Target `development` for everyday work,
-> or drop the approval count to `0` in **Settings → Branches** until there is a second
-> maintainer.
 
 ## Secret scanning
 
