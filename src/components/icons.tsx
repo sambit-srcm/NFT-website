@@ -105,3 +105,77 @@ export function InstagramIcon(props: IconProps) {
     </svg>
   );
 }
+
+export function PaletteIcon(props: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" width={28} height={28} aria-hidden="true" {...props}>
+      <path
+        d="M12 3a9 9 0 1 0 0 18c1.2 0 2-.8 2-1.8 0-.5-.2-.9-.5-1.2-.3-.3-.5-.7-.5-1.2 0-1 .8-1.8 1.8-1.8H16a5 5 0 0 0 5-5c0-3.9-4-7-9-7Z"
+        {...base}
+      />
+      <path d="M7.5 12h.01M9.5 8h.01M14.5 7.5h.01M17.5 11h.01" {...base} />
+    </svg>
+  );
+}
+
+export function CollectibleIcon(props: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" width={28} height={28} aria-hidden="true" {...props}>
+      <path d="m12 3 8 4.5v9L12 21l-8-4.5v-9L12 3Z M4 7.5 12 12l8-4.5M12 12v9" {...base} />
+    </svg>
+  );
+}
+
+export function MusicIcon(props: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" width={28} height={28} aria-hidden="true" {...props}>
+      <path d="M9 18V6l11-2v12" {...base} />
+      <circle cx="6.5" cy="18" r="2.5" {...base} />
+      <circle cx="17.5" cy="16" r="2.5" {...base} />
+    </svg>
+  );
+}
+
+export function CameraIcon(props: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" width={28} height={28} aria-hidden="true" {...props}>
+      <path d="M3 8h3l2-3h8l2 3h3v11H3z" {...base} />
+      <circle cx="12" cy="13" r="3.5" {...base} />
+    </svg>
+  );
+}
+
+export function VideoIcon(props: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" width={28} height={28} aria-hidden="true" {...props}>
+      <rect x="3" y="6" width="12" height="12" rx="3" {...base} />
+      <path d="m15 12 6-3.5v11L15 12Z" {...base} />
+    </svg>
+  );
+}
+
+export function UtilityIcon(props: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" width={28} height={28} aria-hidden="true" {...props}>
+      <path d="M13 3 5 14h6l-1 7 8-11h-6l1-7Z" {...base} />
+    </svg>
+  );
+}
+
+export function SportIcon(props: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" width={28} height={28} aria-hidden="true" {...props}>
+      <circle cx="12" cy="12" r="9" {...base} />
+      <path d="M3.5 9.5h17M3.5 14.5h17M12 3c-3 3-3 15 0 18M12 3c3 3 3 15 0 18" {...base} />
+    </svg>
+  );
+}
+
+export function VirtualWorldIcon(props: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" width={28} height={28} aria-hidden="true" {...props}>
+      <circle cx="12" cy="12" r="7" {...base} />
+      <ellipse cx="12" cy="12" rx="11" ry="4" transform="rotate(-25 12 12)" {...base} />
+    </svg>
+  );
+}
