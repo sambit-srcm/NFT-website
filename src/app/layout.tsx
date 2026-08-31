@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Space_Mono, Work_Sans } from "next/font/google";
+import { SiteFooter } from "@/components/layout/site-footer";
+import { SiteHeader } from "@/components/layout/site-header";
 import "./globals.css";
 
 const workSans = Work_Sans({
@@ -24,7 +26,11 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className={`${workSans.variable} ${spaceMono.variable} h-full antialiased`}>
-      <body className="bg-canvas text-ink flex min-h-full flex-col">{children}</body>
+      <body className="bg-canvas text-ink flex min-h-full flex-col">
+        <SiteHeader />
+        {children}
+        <SiteFooter />
+      </body>
     </html>
   );
 }
