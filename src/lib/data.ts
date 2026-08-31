@@ -59,3 +59,47 @@ export const CATEGORIES: Category[] = [
   { id: "sport", label: "Sport" },
   { id: "virtual-worlds", label: "Virtual Worlds" },
 ];
+
+export type Nft = {
+  id: string;
+  name: string;
+  creator: string;
+  price: number;
+  highestBid: number;
+};
+
+export const NFTS: Nft[] = [
+  {
+    id: "distant-galaxy",
+    name: "Distant Galaxy",
+    creator: "MoonDancer",
+    price: 1.63,
+    highestBid: 0.33,
+  },
+  {
+    id: "life-on-edena",
+    name: "Life On Edena",
+    creator: "NebulaKid",
+    price: 1.63,
+    highestBid: 0.33,
+  },
+  { id: "astrofiction", name: "AstroFiction", creator: "Spaceone", price: 1.63, highestBid: 0.33 },
+];
+
+export const STEPS = [
+  {
+    id: "wallet",
+    title: "Setup Your Wallet",
+    body: "Set up your wallet of choice. Connect it to the marketplace by clicking the wallet icon in the top right corner.",
+  },
+  {
+    id: "collection",
+    title: "Create Collection",
+    body: "Upload your work and setup your collection. Add a description, social links and floor price.",
+  },
+  {
+    id: "earning",
+    title: "Start Earning",
+    body: "Choose between auctions and fixed-price listings. Start earning by selling your NFTs or trading others.",
+  },
+] as const;

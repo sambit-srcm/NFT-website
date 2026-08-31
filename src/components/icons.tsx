@@ -48,8 +48,10 @@ export function UserIcon(props: IconProps) {
 export function RocketIcon(props: IconProps) {
   return (
     <svg viewBox="0 0 24 24" width={20} height={20} aria-hidden="true" {...props}>
+      <path d="M12 2.5c2.8 2.2 4.2 5.1 4.2 8.6L12 15.5l-4.2-4.4c0-3.5 1.4-6.4 4.2-8.6Z" {...base} />
+      <circle cx="12" cy="9" r="1.6" {...base} />
       <path
-        d="M14 4c3.5 0 6 2.5 6 6 0 4.5-4 8.5-8 10l-2-2-2-2C9.5 12 13.5 4 14 4Z M9.5 14.5 6 18M7 11H4l2-3h3"
+        d="m7.8 11.1-2.3 2.3 1 3.4 2.6-1.4M16.2 11.1l2.3 2.3-1 3.4-2.6-1.4M10.6 18.4h2.8"
         {...base}
       />
     </svg>
@@ -176,6 +178,36 @@ export function VirtualWorldIcon(props: IconProps) {
     <svg viewBox="0 0 24 24" width={28} height={28} aria-hidden="true" {...props}>
       <circle cx="12" cy="12" r="7" {...base} />
       <ellipse cx="12" cy="12" rx="11" ry="4" transform="rotate(-25 12 12)" {...base} />
+    </svg>
+  );
+}
+
+export function WalletIcon(props: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" width={28} height={28} aria-hidden="true" {...props}>
+      <path
+        d="M3 7.5A2.5 2.5 0 0 1 5.5 5H18v3M3 7.5V17a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-2M3 7.5h16a2 2 0 0 1 2 2V11"
+        {...base}
+      />
+      <path d="M17.5 13h3.5v3h-3.5a1.5 1.5 0 0 1 0-3Z" {...base} />
+    </svg>
+  );
+}
+
+export function CoinsIcon(props: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" width={28} height={28} aria-hidden="true" {...props}>
+      <ellipse cx="12" cy="6.5" rx="7" ry="3" {...base} />
+      <path d="M5 6.5v11c0 1.7 3.1 3 7 3s7-1.3 7-3v-11M5 12c0 1.7 3.1 3 7 3s7-1.3 7-3" {...base} />
+    </svg>
+  );
+}
+
+export function EyeIcon(props: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" width={20} height={20} aria-hidden="true" {...props}>
+      <path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12Z" {...base} />
+      <circle cx="12" cy="12" r="3" {...base} />
     </svg>
   );
 }

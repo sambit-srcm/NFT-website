@@ -6,7 +6,7 @@ import { CREATORS } from "@/lib/data";
 
 export function TopCreators() {
   return (
-    <section id="rankings" className="py-section">
+    <section id="rankings" className="py-section scroll-mt-24 lg:scroll-mt-28">
       <Container>
         <Reveal>
           <SectionHeading

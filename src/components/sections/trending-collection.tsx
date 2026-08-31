@@ -5,7 +5,7 @@ import { COLLECTIONS } from "@/lib/data";
 
 export function TrendingCollection() {
   return (
-    <section id="marketplace" className="py-section">
+    <section id="marketplace" className="py-section scroll-mt-24 lg:scroll-mt-28">
       <Container>
         <Reveal>
           <SectionHeading
