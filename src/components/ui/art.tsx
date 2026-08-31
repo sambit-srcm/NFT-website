@@ -1,38 +1,65 @@
-import { cn } from "@/lib/cn";
+import Image from "next/image";
 
-/**
- * Placeholder artwork.
- *
- * The kit ships without bitmap artwork, so every tile renders the same
- * placeholder image until real assets exist.
- */
+import { cn } from "@/lib/cn";
+import { artSrc, avatarSrc } from "@/lib/images";
 
 const PLACEHOLDER = "/images/placeholder.svg";
 
-export function Art({
+/**
+ * Artwork tile.
+ *
+ * Seeds that the Figma export covers render the real image; anything else
+ * falls back to the placeholder image.
+ */
+
+function Tile({
   seed,
+  src,
   className,
-  rounded = "rounded-[20px]",
+  rounded,
+  sizes,
 }: {
   seed: string;
+  src: string | undefined;
   className?: string;
-  rounded?: string;
+  rounded: string;
+  sizes: string;
 }) {
   return (
     <div
       role="presentation"
       data-seed={seed}
       className={cn("relative overflow-hidden", rounded, className)}
-      style={{
-        backgroundImage: `url(${PLACEHOLDER})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
-    />
+    >
+      <Image src={src ?? PLACEHOLDER} alt="" fill sizes={sizes} className="object-cover" />
+    </div>
   );
 }
 
-/** Circular variant used for creator and collection avatars. */
+export function Art({
+  seed,
+  className,
+  rounded = "rounded-[20px]",
+  sizes = "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw",
+}: {
+  seed: string;
+  className?: string;
+  rounded?: string;
+  sizes?: string;
+}) {
+  return (
+    <Tile seed={seed} src={artSrc(seed)} className={className} rounded={rounded} sizes={sizes} />
+  );
+}
+
 export function Avatar({ seed, className }: { seed: string; className?: string }) {
-  return <Art seed={seed} rounded="rounded-full" className={className} />;
+  return (
+    <Tile
+      seed={seed}
+      src={avatarSrc(seed)}
+      className={className}
+      rounded="rounded-full"
+      sizes="120px"
+    />
+  );
 }
