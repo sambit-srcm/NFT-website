@@ -6,10 +6,58 @@
  */
 
 /** Collection tiles double as NFT artwork in the design, so some files are shared. */
-export const ART_BY_SEED: Record<string, string> = {};
+export const ART_BY_SEED: Record<string, string> = {
+  // Landing page.
+  "space-walking": "/images/nfts/space-walking.png",
+  "weekly-digest": "/images/pages/subscribe.png",
+
+  // Trending collections: one primary tile plus two secondary.
+  "dsgn-animals": "/images/collections/dsgn-animals-primary.png",
+  "dsgn-animals-a": "/images/collections/dsgn-animals-2.png",
+  "dsgn-animals-b": "/images/collections/dsgn-animals-3.png",
+  "magic-mushrooms": "/images/collections/magic-mushrooms-primary.png",
+  "magic-mushrooms-a": "/images/collections/magic-mushrooms-2.png",
+  "magic-mushrooms-b": "/images/collections/magic-mushrooms-3.png",
+  "disco-machines": "/images/collections/disco-machines-primary.png",
+  "disco-machines-a": "/images/collections/disco-machines-2.png",
+  "disco-machines-b": "/images/collections/disco-machines-3.png",
+
+  // Browse categories.
+  "category-art": "/images/categories/art.png",
+  "category-collectibles": "/images/categories/collectibles.png",
+  "category-music": "/images/categories/music.png",
+  "category-photography": "/images/categories/photography.png",
+  "category-video": "/images/categories/video.png",
+  "category-utility": "/images/categories/utility.png",
+  "category-sport": "/images/categories/sport.png",
+  "category-virtual-worlds": "/images/categories/virtual-worlds.png",
+
+  // Discover NFTs.
+  "distant-galaxy": "/images/nfts/distant-galaxy.png",
+  "life-on-edena": "/images/nfts/space-tales.png",
+  astrofiction: "/images/nfts/astrofiction.png",
+};
 
 /** Avatars are keyed by creator name, matched case-insensitively. */
-const AVATAR_BY_NAME: Record<string, string> = {};
+const AVATAR_BY_NAME: Record<string, string> = {
+  keepitreal: "/images/avatars/keepitreal.png",
+  digilab: "/images/avatars/digilab.png",
+  gravityone: "/images/avatars/gravityone.png",
+  juanie: "/images/avatars/juanie.png",
+  bluewhale: "/images/avatars/bluewhale.png",
+  mrfox: "/images/avatars/mrfox.png",
+  shroomie: "/images/avatars/shroomie.png",
+  robotica: "/images/avatars/robotica.png",
+  rustyrobot: "/images/avatars/rustyrobot.png",
+  animakid: "/images/avatars/animakid.png",
+  dotgu: "/images/avatars/dotgu.png",
+  ghiblier: "/images/avatars/ghiblier.png",
+  bekind2robots: "/images/avatars/bekind2robots.png",
+  moondancer: "/images/avatars/moondancer.png",
+  nebulakid: "/images/avatars/nebulakid.png",
+  // The design reuses this avatar for Spaceone.
+  spaceone: "/images/avatars/dotgu.png",
+};
 
 export function artSrc(seed: string): string | undefined {
   return ART_BY_SEED[seed];
