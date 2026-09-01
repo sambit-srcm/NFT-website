@@ -39,6 +39,9 @@ export const ART_BY_SEED: Record<string, string> = {
 
   // Create account page.
   "create-account": "/images/pages/create-account.png",
+
+  // Connect wallet page.
+  "connect-wallet": "/images/pages/connect-wallet.png",
 };
 
 /** Avatars are keyed by creator name, matched case-insensitively. */
