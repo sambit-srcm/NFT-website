@@ -11,7 +11,7 @@ import { CloseIcon, LogoMark, MenuIcon, UserIcon } from "@/components/icons";
 const NAV_LINKS = [
   { label: "Marketplace", href: "#marketplace" },
   { label: "Rankings", href: "#rankings" },
-  { label: "Connect a wallet", href: "#wallet" },
+  { label: "Connect a wallet", href: "/connect-wallet" },
 ];
 
 export function SiteHeader() {
@@ -61,7 +61,7 @@ export function SiteHeader() {
               {link.label}
             </Link>
           ))}
-          <Button href="#signup" icon={<UserIcon />}>
+          <Button href="/create-account" icon={<UserIcon />}>
             Sign Up
           </Button>
         </nav>
@@ -100,7 +100,7 @@ export function SiteHeader() {
                   {link.label}
                 </Link>
               ))}
-              <Button href="#signup" icon={<UserIcon />} fullWidth className="mt-2">
+              <Button href="/create-account" icon={<UserIcon />} fullWidth className="mt-2">
                 Sign Up
               </Button>
             </Container>
