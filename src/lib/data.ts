@@ -103,3 +103,11 @@ export const STEPS = [
     body: "Choose between auctions and fixed-price listings. Start earning by selling your NFTs or trading others.",
   },
 ] as const;
+
+export type Wallet = { id: string; name: string };
+
+export const WALLETS: Wallet[] = [
+  { id: "metamask", name: "Metamask" },
+  { id: "walletconnect", name: "WalletConnect" },
+  { id: "coinbase", name: "Coinbase" },
+];
