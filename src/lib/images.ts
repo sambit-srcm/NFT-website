@@ -36,6 +36,9 @@ export const ART_BY_SEED: Record<string, string> = {
   "distant-galaxy": "/images/nfts/distant-galaxy.png",
   "life-on-edena": "/images/nfts/space-tales.png",
   astrofiction: "/images/nfts/astrofiction.png",
+
+  // Create account page.
+  "create-account": "/images/pages/create-account.png",
 };
 
 /** Avatars are keyed by creator name, matched case-insensitively. */
