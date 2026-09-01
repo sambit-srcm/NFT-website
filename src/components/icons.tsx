@@ -211,3 +211,41 @@ export function EyeIcon(props: IconProps) {
     </svg>
   );
 }
+
+export function LockIcon(props: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" width={20} height={20} aria-hidden="true" {...props}>
+      <rect x="4" y="10" width="16" height="10" rx="2.5" {...base} />
+      <path d="M8 10V7.5a4 4 0 0 1 8 0V10M12 14v2.5" {...base} />
+    </svg>
+  );
+}
+
+export function MetamaskIcon(props: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" width={32} height={32} aria-hidden="true" {...props}>
+      <path d="m3 4 7.5 5.5h3L21 4l-2 7 2 6-4.5 3h-9L3 17l2-6L3 4Z" {...base} />
+      <path d="M10.5 9.5 9 13h6l-1.5-3.5M9 13l-1.5 4M15 13l1.5 4" {...base} />
+    </svg>
+  );
+}
+
+export function WalletConnectIcon(props: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" width={32} height={32} aria-hidden="true" {...props}>
+      <path
+        d="M5.5 9.8a9 9 0 0 1 13 0M8.2 12.6a5.2 5.2 0 0 1 7.6 0M10.9 15.4a1.6 1.6 0 0 1 2.2 0"
+        {...base}
+      />
+    </svg>
+  );
+}
+
+export function CoinbaseIcon(props: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" width={32} height={32} aria-hidden="true" {...props}>
+      <circle cx="12" cy="12" r="9" {...base} />
+      <rect x="9.5" y="9.5" width="5" height="5" rx="1.2" {...base} />
+    </svg>
+  );
+}
