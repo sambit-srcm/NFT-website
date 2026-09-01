@@ -150,7 +150,6 @@ Both branches require these checks to pass before merging:
 
 Branches must also be up to date with the base branch before merging.
 
-
 ## Secret scanning
 
 Gitleaks runs in two places:
