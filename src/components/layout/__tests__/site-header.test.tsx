@@ -51,4 +51,17 @@ describe("SiteHeader", () => {
       expect(screen.getByRole("link", { name: label })).toBeInTheDocument();
     }
   });
+
+  it("points the account links at their routes", () => {
+    render(<SiteHeader />);
+
+    expect(screen.getByRole("link", { name: "Connect a wallet" })).toHaveAttribute(
+      "href",
+      "/connect-wallet",
+    );
+    expect(screen.getByRole("link", { name: /^sign up$/i })).toHaveAttribute(
+      "href",
+      "/create-account",
+    );
+  });
 });

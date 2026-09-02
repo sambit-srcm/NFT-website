@@ -7,7 +7,7 @@ import { DiscordIcon, InstagramIcon, LogoMark, TwitterIcon, YoutubeIcon } from "
 const EXPLORE_LINKS = [
   { label: "Marketplace", href: "#marketplace" },
   { label: "Rankings", href: "#rankings" },
-  { label: "Connect a wallet", href: "#wallet" },
+  { label: "Connect a wallet", href: "/connect-wallet" },
 ];
 
 const SOCIALS = [
