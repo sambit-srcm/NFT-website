@@ -48,6 +48,12 @@ export const ART_BY_SEED: Record<string, string> = {
   "magic-mushroom": "/images/collections/magic-mushrooms-primary.png",
   "dsgn-animal": "/images/collections/dsgn-animals-primary.png",
   "disco-machine": "/images/collections/disco-machines-primary.png",
+
+  // NFT detail page and the row of other work by the same creator.
+  "the-orbitians": "/images/nfts/sunset-dimension.png",
+  "foxy-life": "/images/nfts/dancing-robot-0024.png",
+  "cat-from-future": "/images/collections/dsgn-animals-2.png",
+  "psycho-dog": "/images/nfts/colorful-dog-0344.png",
 };
 
 /** Avatars are keyed by creator name, matched case-insensitively. */
@@ -69,6 +75,8 @@ const AVATAR_BY_NAME: Record<string, string> = {
   nebulakid: "/images/avatars/nebulakid.png",
   // The design reuses this avatar for Spaceone.
   spaceone: "/images/avatars/dotgu.png",
+  // The design reuses this avatar for Orbitian.
+  orbitian: "/images/avatars/rustyrobot.png",
 };
 
 export function artSrc(seed: string): string | undefined {
