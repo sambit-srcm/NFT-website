@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import { Avatar } from "@/components/ui/art";
 import { Button } from "@/components/ui/button";
 import { Container, SectionHeading } from "@/components/ui/container";
@@ -23,7 +25,10 @@ export function TopCreators() {
         <ol className="mt-10 grid grid-cols-2 gap-5 md:grid-cols-3 lg:grid-cols-4">
           {CREATORS.map((creator, index) => (
             <Reveal as="li" key={creator.name} delay={Math.min(index, 7) * 0.05}>
-              <article className="bg-surface relative flex flex-col items-center rounded-[20px] p-4 sm:p-5">
+              <Link
+                href="/artist"
+                className="bg-surface hover:bg-surface-raised relative flex flex-col items-center rounded-[20px] p-4 transition-colors sm:p-5"
+              >
                 <span
                   className="bg-canvas text-ink-muted absolute top-4 left-4 grid size-8 place-items-center rounded-full font-mono text-sm"
                   aria-label={`Rank ${creator.rank}`}
@@ -38,7 +43,7 @@ export function TopCreators() {
                   <span className="text-ink-muted">Total Sales: </span>
                   <span className="font-mono">{creator.sales.toFixed(2)} ETH</span>
                 </p>
-              </article>
+              </Link>
             </Reveal>
           ))}
         </ol>
