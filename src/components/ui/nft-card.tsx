@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import { Art, Avatar } from "@/components/ui/art";
 import type { Nft } from "@/lib/data";
 
@@ -9,7 +11,10 @@ import type { Nft } from "@/lib/data";
  */
 export function NftCard({ nft }: { nft: Nft }) {
   return (
-    <article className="bg-surface h-full overflow-hidden rounded-[20px]">
+    <Link
+      href="/nft"
+      className="bg-surface hover:bg-surface-raised block h-full overflow-hidden rounded-[20px] transition-colors"
+    >
       <Art seed={nft.id} rounded="rounded-none" className="aspect-square w-full" />
       <div className="p-5">
         <h3 className="font-display text-xl font-semibold sm:text-[22px]">{nft.name}</h3>
@@ -28,6 +33,6 @@ export function NftCard({ nft }: { nft: Nft }) {
           </div>
         </dl>
       </div>
-    </article>
+    </Link>
   );
 }
