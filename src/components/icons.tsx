@@ -249,3 +249,32 @@ export function CoinbaseIcon(props: IconProps) {
     </svg>
   );
 }
+
+export function CopyIcon(props: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" width={20} height={20} aria-hidden="true" {...props}>
+      <rect x="9" y="9" width="11" height="11" rx="2.5" {...base} />
+      <path
+        d="M15 6.5A2.5 2.5 0 0 0 12.5 4h-6A2.5 2.5 0 0 0 4 6.5v6A2.5 2.5 0 0 0 6.5 15"
+        {...base}
+      />
+    </svg>
+  );
+}
+
+export function PlusIcon(props: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" width={20} height={20} aria-hidden="true" {...props}>
+      <path d="M12 5v14M5 12h14" {...base} />
+    </svg>
+  );
+}
+
+export function GlobeIcon(props: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" width={32} height={32} aria-hidden="true" {...props}>
+      <circle cx="12" cy="12" r="9" {...base} />
+      <path d="M3.5 12h17M12 3c2.5 2.7 2.5 15.3 0 18M12 3c-2.5 2.7-2.5 15.3 0 18" {...base} />
+    </svg>
+  );
+}
