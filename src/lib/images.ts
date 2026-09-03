@@ -42,6 +42,12 @@ export const ART_BY_SEED: Record<string, string> = {
 
   // Connect wallet page.
   "connect-wallet": "/images/pages/connect-wallet.png",
+
+  // Artist page: cover plus the owned and collection tabs.
+  "animakid-cover": "/images/pages/artist-cover.png",
+  "magic-mushroom": "/images/collections/magic-mushrooms-primary.png",
+  "dsgn-animal": "/images/collections/dsgn-animals-primary.png",
+  "disco-machine": "/images/collections/disco-machines-primary.png",
 };
 
 /** Avatars are keyed by creator name, matched case-insensitively. */
