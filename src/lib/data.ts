@@ -111,3 +111,56 @@ export const WALLETS: Wallet[] = [
   { id: "walletconnect", name: "WalletConnect" },
   { id: "coinbase", name: "Coinbase" },
 ];
+
+export type Artist = {
+  handle: string;
+  name: string;
+  bio: string;
+  address: string;
+  stats: Array<{ value: string; label: string }>;
+};
+
+export const ARTIST: Artist = {
+  handle: "animakid",
+  name: "Animakid",
+  bio: "The Internet's Friendliest Designer Kid.",
+  address: "0xc0E3F82CB9c1B79C7c8dB1E5b3F1B79C7c8dB79C",
+  stats: [
+    { value: "250k+", label: "Volume" },
+    { value: "50+", label: "NFTs Sold" },
+    { value: "3000+", label: "Followers" },
+  ],
+};
+
+/** Portfolio tabs. Counts are the totals shown on the tab, not the page size. */
+export const ARTIST_TABS = [
+  { id: "created", label: "Created", count: 302 },
+  { id: "owned", label: "Owned", count: 67 },
+  { id: "collection", label: "Collection", count: 4 },
+] as const;
+
+export type ArtistTabId = (typeof ARTIST_TABS)[number]["id"];
+
+/** Which NFTs appear under each tab. */
+export const ARTIST_PORTFOLIO: Record<ArtistTabId, Nft[]> = {
+  created: NFTS,
+  owned: [
+    {
+      id: "magic-mushroom",
+      name: "Magic Mushroom",
+      creator: "Shroomie",
+      price: 2.41,
+      highestBid: 0.71,
+    },
+    { id: "dsgn-animal", name: "Dsgn Animal", creator: "MrFox", price: 1.98, highestBid: 0.42 },
+  ],
+  collection: [
+    {
+      id: "disco-machine",
+      name: "Disco Machine",
+      creator: "BeKind2Robots",
+      price: 3.12,
+      highestBid: 1.04,
+    },
+  ],
+};
