@@ -164,3 +164,49 @@ export const ARTIST_PORTFOLIO: Record<ArtistTabId, Nft[]> = {
     },
   ],
 };
+
+export type NftDetail = {
+  id: string;
+  name: string;
+  mintedOn: string;
+  creator: string;
+  collection: string;
+  description: string[];
+  tags: string[];
+  price: number;
+  highestBid: number;
+  links: Array<{ label: string; href: string }>;
+};
+
+export const NFT_DETAIL: NftDetail = {
+  id: "the-orbitians",
+  name: "The Orbitians",
+  mintedOn: "Sep 30, 2022",
+  creator: "Orbitian",
+  collection: "A collection of 10,000 unique NFTs on the Ethereum blockchain.",
+  description: [
+    "The Orbitians is a collection of 10,000 unique NFTs on the Ethereum blockchain.",
+    "There are all sorts of beings in the NFT Universe. The most advanced and friendly of the bunch are Orbitians.",
+    "They live in a metal space machine, high up in the sky and only have one law: be kind to each other.",
+  ],
+  tags: ["ANIMATION", "ILLUSTRATION", "MOON"],
+  price: 1.63,
+  highestBid: 0.33,
+  links: [
+    { label: "View on Etherscan", href: "#etherscan" },
+    { label: "View Original", href: "#original" },
+  ],
+};
+
+/** Other work by the same creator, shown beneath the detail panel. */
+export const MORE_FROM_ARTIST: Nft[] = [
+  { id: "foxy-life", name: "Foxy Life", creator: "Orbitian", price: 1.63, highestBid: 0.33 },
+  {
+    id: "cat-from-future",
+    name: "Cat From Future",
+    creator: "Orbitian",
+    price: 1.63,
+    highestBid: 0.33,
+  },
+  { id: "psycho-dog", name: "Psycho Dog", creator: "Orbitian", price: 1.63, highestBid: 0.33 },
+];
