@@ -278,3 +278,12 @@ export function GlobeIcon(props: IconProps) {
     </svg>
   );
 }
+
+export function SearchIcon(props: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" width={20} height={20} aria-hidden="true" {...props}>
+      <circle cx="11" cy="11" r="6.5" {...base} />
+      <path d="m16 16 4 4" {...base} />
+    </svg>
+  );
+}
