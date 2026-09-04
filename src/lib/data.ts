@@ -164,3 +164,56 @@ export const ARTIST_PORTFOLIO: Record<ArtistTabId, Nft[]> = {
     },
   ],
 };
+
+/** Listings shown on the marketplace browse page. */
+export const MARKETPLACE_NFTS: Nft[] = [
+  {
+    id: "magic-mushroom-0325",
+    name: "Magic Mushroom 0325",
+    creator: "Shroomie",
+    price: 1.63,
+    highestBid: 0.33,
+  },
+  {
+    id: "happy-robot-032",
+    name: "Happy Robot 032",
+    creator: "BeKind2Robots",
+    price: 1.94,
+    highestBid: 0.41,
+  },
+  { id: "designer-bear", name: "Designer Bear", creator: "MrFox", price: 2.12, highestBid: 0.55 },
+  {
+    id: "space-walking-02",
+    name: "Space Walking",
+    creator: "Animakid",
+    price: 1.28,
+    highestBid: 0.22,
+  },
+  { id: "iridescence", name: "Iridescence", creator: "Keepitreal", price: 3.04, highestBid: 0.98 },
+  { id: "cyber-samurai", name: "Cyber Samurai", creator: "DigiLab", price: 2.47, highestBid: 0.61 },
+  { id: "moon-dancer", name: "Moon Dancer", creator: "MoonDancer", price: 1.11, highestBid: 0.18 },
+  { id: "nebula-kid", name: "Nebula Kid", creator: "NebulaKid", price: 2.85, highestBid: 0.74 },
+  {
+    id: "orbital-drift",
+    name: "Orbital Drift",
+    creator: "Orbitian",
+    price: 1.72,
+    highestBid: 0.36,
+  },
+];
+
+export const MARKETPLACE_TABS = [
+  { id: "nfts", label: "NFTs", count: 302 },
+  { id: "collections", label: "Collections", count: 67 },
+] as const;
+
+export type MarketplaceTabId = (typeof MARKETPLACE_TABS)[number]["id"];
+
+export const SORT_OPTIONS = [
+  { id: "recent", label: "Recently added" },
+  { id: "price-low", label: "Price: low to high" },
+  { id: "price-high", label: "Price: high to low" },
+  { id: "name", label: "Name: A to Z" },
+] as const;
+
+export type SortId = (typeof SORT_OPTIONS)[number]["id"];
