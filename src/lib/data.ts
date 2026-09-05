@@ -217,3 +217,69 @@ export const SORT_OPTIONS = [
 ] as const;
 
 export type SortId = (typeof SORT_OPTIONS)[number]["id"];
+
+export type RankedCreator = {
+  rank: number;
+  name: string;
+  /** Percentage movement over the selected period. */
+  change: number;
+  nftsSold: number;
+  volume: number;
+};
+
+export const RANKING_PERIODS = [
+  { id: "today", label: "Today" },
+  { id: "week", label: "This Week" },
+  { id: "month", label: "This Month" },
+  { id: "all", label: "All Time" },
+] as const;
+
+export type RankingPeriodId = (typeof RANKING_PERIODS)[number]["id"];
+
+const RANKED_NAMES = [
+  "Jaydon Ekstrom Bothman",
+  "Ruben Carder",
+  "Alfredo Septimus",
+  "Davis Franci",
+  "Maren Rosser",
+  "Kaiya Vetrovs",
+  "Gustavo Bergson",
+  "Tiana Rosser",
+  "Marley Bator",
+  "Alfonso Septimus",
+  "Angel Rosser",
+  "Cristofer Vaccaro",
+  "Terry Dorwart",
+  "Jaylon Vaccaro",
+  "Talan Bator",
+  "Zaire Dorwart",
+  "Kianna Vetrovs",
+  "Cooper Levin",
+  "Nolan Carder",
+  "Adison Aminoff",
+];
+
+/**
+ * Rankings are derived rather than hand-written so each period returns a
+ * distinct, stable ordering without twenty rows repeated four times.
+ */
+function buildRankings(seed: number): RankedCreator[] {
+  return RANKED_NAMES.map((name, index) => {
+    const drift = ((index * 7 + seed * 13) % 19) - 6;
+
+    return {
+      rank: index + 1,
+      name,
+      change: Number((drift / 2 + 1.41).toFixed(2)),
+      nftsSold: 602 - index * 17 - seed * 9,
+      volume: Number((12.4 - index * 0.31 - seed * 0.4).toFixed(2)),
+    };
+  });
+}
+
+export const RANKINGS: Record<RankingPeriodId, RankedCreator[]> = {
+  today: buildRankings(0),
+  week: buildRankings(1),
+  month: buildRankings(2),
+  all: buildRankings(3),
+};
