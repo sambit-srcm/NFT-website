@@ -9,8 +9,8 @@ import { Container } from "@/components/ui/container";
 import { CloseIcon, LogoMark, MenuIcon, UserIcon } from "@/components/icons";
 
 const NAV_LINKS = [
-  { label: "Marketplace", href: "#marketplace" },
-  { label: "Rankings", href: "#rankings" },
+  { label: "Marketplace", href: "/marketplace" },
+  { label: "Rankings", href: "/rankings" },
   { label: "Connect a wallet", href: "/connect-wallet" },
 ];
 

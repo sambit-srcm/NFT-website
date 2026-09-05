@@ -16,7 +16,7 @@ export function DiscoverNfts() {
             title="Discover More NFTs"
             description="Explore new trending NFTs"
             action={
-              <Button href="#marketplace" variant="outline" className="hidden sm:inline-flex">
+              <Button href="/marketplace" variant="outline" className="hidden sm:inline-flex">
                 See All
               </Button>
             }
@@ -32,7 +32,7 @@ export function DiscoverNfts() {
         </ul>
 
         <Reveal className="mt-8 sm:hidden">
-          <Button href="#marketplace" variant="outline" fullWidth>
+          <Button href="/marketplace" variant="outline" fullWidth>
             See All
           </Button>
         </Reveal>

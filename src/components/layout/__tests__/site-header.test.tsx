@@ -63,5 +63,10 @@ describe("SiteHeader", () => {
       "href",
       "/create-account",
     );
+    expect(screen.getByRole("link", { name: "Marketplace" })).toHaveAttribute(
+      "href",
+      "/marketplace",
+    );
+    expect(screen.getByRole("link", { name: "Rankings" })).toHaveAttribute("href", "/rankings");
   });
 });

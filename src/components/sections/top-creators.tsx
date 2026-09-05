@@ -15,7 +15,7 @@ export function TopCreators() {
             title="Top creators"
             description="Checkout Top Rated Creators on the NFT Marketplace"
             action={
-              <Button href="#rankings" variant="outline" className="hidden sm:inline-flex">
+              <Button href="/rankings" variant="outline" className="hidden sm:inline-flex">
                 View Rankings
               </Button>
             }
@@ -49,7 +49,7 @@ export function TopCreators() {
         </ol>
 
         <Reveal className="mt-8 sm:hidden">
-          <Button href="#rankings" variant="outline" fullWidth>
+          <Button href="/rankings" variant="outline" fullWidth>
             View Rankings
           </Button>
         </Reveal>
