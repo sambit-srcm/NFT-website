@@ -287,3 +287,10 @@ export function SearchIcon(props: IconProps) {
     </svg>
   );
 }
+export function ChevronDownIcon(props: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" width={20} height={20} aria-hidden="true" {...props}>
+      <path d="m6 9.5 6 6 6-6" {...base} />
+    </svg>
+  );
+}
