@@ -61,6 +61,10 @@ export function RankingsBoard() {
           })}
         </div>
 
+        {/*
+         * Two presentations of the same rows. Each is display:none at the other
+         * breakpoint, so only one is ever exposed to assistive technology.
+         */}
         <table className="mt-10 hidden w-full text-left lg:table">
           <caption className="sr-only">
             Top creators, {RANKING_PERIODS.find((p) => p.id === period)?.label}
@@ -103,6 +107,35 @@ export function RankingsBoard() {
             ))}
           </tbody>
         </table>
+
+        <ul className="mt-10 space-y-4 lg:hidden">
+          {rows.map((row) => (
+            <li key={row.name} className="bg-surface rounded-[20px] p-4">
+              <div className="flex items-center gap-4">
+                <span className="text-ink-muted w-6 shrink-0 font-mono">{row.rank}</span>
+                <Avatar seed={row.name} className="size-10 shrink-0" />
+                <span className="font-semibold">{row.name}</span>
+              </div>
+
+              <dl className="mt-4 grid grid-cols-3 gap-3 text-sm">
+                <div>
+                  <dt className="text-ink-subtle text-xs">Change</dt>
+                  <dd className="mt-1">
+                    <ChangeValue change={row.change} />
+                  </dd>
+                </div>
+                <div>
+                  <dt className="text-ink-subtle text-xs">NFTs Sold</dt>
+                  <dd className="mt-1 font-mono">{row.nftsSold}</dd>
+                </div>
+                <div className="text-right">
+                  <dt className="text-ink-subtle text-xs">Volume</dt>
+                  <dd className="mt-1 font-mono">{row.volume.toFixed(2)} ETH</dd>
+                </div>
+              </dl>
+            </li>
+          ))}
+        </ul>
       </Container>
     </section>
   );
