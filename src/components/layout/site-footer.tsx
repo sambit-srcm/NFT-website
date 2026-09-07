@@ -5,8 +5,8 @@ import { SubscribeForm } from "@/components/layout/subscribe-form";
 import { DiscordIcon, InstagramIcon, LogoMark, TwitterIcon, YoutubeIcon } from "@/components/icons";
 
 const EXPLORE_LINKS = [
-  { label: "Marketplace", href: "#marketplace" },
-  { label: "Rankings", href: "#rankings" },
+  { label: "Marketplace", href: "/marketplace" },
+  { label: "Rankings", href: "/rankings" },
   { label: "Connect a wallet", href: "/connect-wallet" },
 ];
 
