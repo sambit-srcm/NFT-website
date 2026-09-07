@@ -90,11 +90,16 @@ const AVATAR_BY_NAME: Record<string, string> = {
   orbitian: "/images/avatars/rustyrobot.png",
 };
 
+/** Ranked creators are stock names, so they share the design's single avatar. */
+const RANKED_AVATAR = "/images/avatars/ranked-creator.png";
+
+const RANKED_NAME = /^[A-Z][a-z]+ [A-Z]/;
+
 export function artSrc(seed: string): string | undefined {
   return ART_BY_SEED[seed];
 }
 
 export function avatarSrc(seed: string): string | undefined {
   const key = seed.toLowerCase().replace(/[^a-z0-9]/g, "");
-  return AVATAR_BY_NAME[key];
+  return AVATAR_BY_NAME[key] ?? (RANKED_NAME.test(seed) ? RANKED_AVATAR : undefined);
 }
