@@ -54,6 +54,17 @@ export const ART_BY_SEED: Record<string, string> = {
   "foxy-life": "/images/nfts/dancing-robot-0024.png",
   "cat-from-future": "/images/collections/dsgn-animals-2.png",
   "psycho-dog": "/images/nfts/colorful-dog-0344.png",
+
+  // Marketplace listings.
+  "magic-mushroom-0325": "/images/collections/magic-mushrooms-2.png",
+  "happy-robot-032": "/images/nfts/happy-robot-024.png",
+  "designer-bear": "/images/collections/dsgn-animals-3.png",
+  "space-walking-02": "/images/nfts/space-walking.png",
+  iridescence: "/images/nfts/colorful-dog-0356.png",
+  "cyber-samurai": "/images/nfts/cryptocity.png",
+  "moon-dancer": "/images/nfts/cherry-blossom-girl-035.png",
+  "nebula-kid": "/images/nfts/space-travel.png",
+  "orbital-drift": "/images/nfts/dancing-robot-0375.png",
 };
 
 /** Avatars are keyed by creator name, matched case-insensitively. */
