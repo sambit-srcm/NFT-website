@@ -3,7 +3,7 @@ import Link from "next/link";
 
 import { cn } from "@/lib/cn";
 
-type Variant = "primary" | "secondary" | "outline";
+type Variant = "primary" | "secondary" | "outline" | "white";
 type Size = "md" | "lg";
 
 const base =
@@ -14,6 +14,7 @@ const variants: Record<Variant, string> = {
   primary: "bg-brand text-ink hover:bg-brand-strong",
   secondary: "bg-surface text-ink hover:bg-surface-raised",
   outline: "border-2 border-brand text-ink hover:bg-brand",
+  white: "bg-white text-canvas hover:bg-white/90",
 };
 
 const sizes: Record<Size, string> = {
