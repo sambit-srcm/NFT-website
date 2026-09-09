@@ -43,8 +43,10 @@ export const ART_BY_SEED: Record<string, string> = {
   // Connect wallet page.
   "connect-wallet": "/images/pages/connect-wallet.png",
 
-  // Artist page: cover plus the owned and collection tabs.
+  // Artist page: cover plus the created, owned and collection tabs.
   "animakid-cover": "/images/pages/artist-cover.png",
+  "icecream-dreams": "/images/nfts/icecream-ape.png",
+  "colorful-companion": "/images/nfts/colorful-dog-0524.png",
   "magic-mushroom": "/images/collections/magic-mushrooms-primary.png",
   "dsgn-animal": "/images/collections/dsgn-animals-primary.png",
   "disco-machine": "/images/collections/disco-machines-primary.png",
