@@ -21,7 +21,7 @@ export function SiteFooter() {
   return (
     <footer className="bg-surface mt-auto">
       <Container className="py-12 lg:py-16">
-        <div className="grid gap-10 border-b border-white/10 pb-10 md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
+        <div className="grid gap-10 border-white/10 pb-10 md:grid-cols-2 md:border-b lg:grid-cols-3 lg:gap-8">
           <div>
             <Link href="/" className="font-display flex items-center gap-3 text-[22px] font-bold">
               <LogoMark className="text-brand" />

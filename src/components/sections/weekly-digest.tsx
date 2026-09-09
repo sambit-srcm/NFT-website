@@ -8,7 +8,7 @@ export function WeeklyDigest() {
     <section id="signup" className="py-section scroll-mt-24 lg:scroll-mt-28">
       <Container>
         <Reveal>
-          <div className="bg-surface grid gap-8 overflow-hidden rounded-[20px] p-6 sm:p-10 lg:grid-cols-2 lg:items-center lg:gap-12">
+          <div className="sm:bg-surface grid gap-8 overflow-hidden rounded-[20px] sm:p-10 lg:grid-cols-2 lg:items-center lg:gap-12">
             <Art seed="weekly-digest" className="aspect-[4/3] w-full lg:aspect-[425/310]" />
 
             <div>
