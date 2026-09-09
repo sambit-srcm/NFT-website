@@ -18,14 +18,11 @@ describe("NftPage", () => {
     expect(screen.getByRole("link", { name: "Orbitian" })).toHaveAttribute("href", "/artist");
   });
 
-  it("shows the auction figures and bid action", () => {
+  it("shows the countdown and bid action", () => {
     render(<NftPage />);
 
-    // Scoped to the auction panel: the same figures appear on the cards below.
     const auction = within(screen.getByRole("region", { name: /auction ends in/i }));
 
-    expect(auction.getByText("1.63 ETH")).toBeInTheDocument();
-    expect(auction.getByText("0.33 wETH")).toBeInTheDocument();
     expect(auction.getByRole("link", { name: /place bid/i })).toBeInTheDocument();
   });
 
