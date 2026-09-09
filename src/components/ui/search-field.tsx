@@ -32,9 +32,6 @@ export function SearchField({
         {label}
       </label>
       <div className="bg-surface focus-within:ring-brand flex items-center gap-3 rounded-[20px] px-5 py-3 focus-within:ring-2">
-        <span aria-hidden="true" className="text-ink-muted shrink-0">
-          <SearchIcon />
-        </span>
         <input
           id={id}
           type="search"
@@ -43,6 +40,9 @@ export function SearchField({
           onChange={(event: ChangeEvent<HTMLInputElement>) => onChange(event.target.value)}
           className="text-ink w-full bg-transparent outline-none placeholder:text-neutral-500"
         />
+        <span aria-hidden="true" className="text-ink-muted shrink-0">
+          <SearchIcon />
+        </span>
       </div>
     </div>
   );
