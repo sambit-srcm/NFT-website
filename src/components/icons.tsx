@@ -10,6 +10,9 @@ const base = {
   strokeLinejoin: "round" as const,
 };
 
+/** Thinner weight for the social/link icons, distinct from the rest of the set. */
+const thin = { ...base, strokeWidth: 1.5 };
+
 export function LogoMark(props: IconProps) {
   return (
     <svg viewBox="0 0 24 24" width={32} height={32} aria-hidden="true" {...props}>
@@ -71,9 +74,9 @@ export function DiscordIcon(props: IconProps) {
     <svg viewBox="0 0 24 24" width={32} height={32} aria-hidden="true" {...props}>
       <path
         d="M8 5.5 6 6c-2 3-2.5 6.5-2 10.5 0 0 2 1.5 5 2l1-2m6-11 2 .5c2 3 2.5 6.5 2 10.5 0 0-2 1.5-5 2l-1-2"
-        {...base}
+        {...thin}
       />
-      <path d="M9 13.5h.01M15 13.5h.01M8 5.5c2.5-.7 5.5-.7 8 0" {...base} />
+      <path d="M9 13.5h.01M15 13.5h.01M8 5.5c2.5-.7 5.5-.7 8 0" {...thin} />
     </svg>
   );
 }
@@ -81,8 +84,8 @@ export function DiscordIcon(props: IconProps) {
 export function YoutubeIcon(props: IconProps) {
   return (
     <svg viewBox="0 0 24 24" width={32} height={32} aria-hidden="true" {...props}>
-      <rect x="2.5" y="5.5" width="19" height="13" rx="4" {...base} />
-      <path d="m10.5 9.5 5 2.5-5 2.5z" {...base} />
+      <rect x="2.5" y="5.5" width="19" height="13" rx="4" {...thin} />
+      <path d="m10.5 9.5 5 2.5-5 2.5z" {...thin} />
     </svg>
   );
 }
@@ -92,7 +95,7 @@ export function TwitterIcon(props: IconProps) {
     <svg viewBox="0 0 24 24" width={32} height={32} aria-hidden="true" {...props}>
       <path
         d="M21 6.5c-.7.3-1.4.5-2.2.6.8-.5 1.4-1.2 1.7-2.1-.8.4-1.6.8-2.5.9A3.6 3.6 0 0 0 12 8.6c0 .3 0 .6.1.8A10 10 0 0 1 4.5 5.5a3.6 3.6 0 0 0 1.1 4.8c-.6 0-1.2-.2-1.7-.5 0 1.7 1.2 3.2 2.9 3.5-.6.2-1.1.2-1.7.1a3.6 3.6 0 0 0 3.4 2.5A7.2 7.2 0 0 1 3 17.4 10.2 10.2 0 0 0 18.7 8.8c.7-.5 1.7-1.3 2.3-2.3Z"
-        {...base}
+        {...thin}
       />
     </svg>
   );
@@ -100,10 +103,23 @@ export function TwitterIcon(props: IconProps) {
 
 export function InstagramIcon(props: IconProps) {
   return (
-    <svg viewBox="0 0 24 24" width={32} height={32} aria-hidden="true" {...props}>
-      <rect x="3.5" y="3.5" width="17" height="17" rx="5" {...base} />
-      <circle cx="12" cy="12" r="3.8" {...base} />
-      <path d="M17 7h.01" {...base} />
+    <svg viewBox="0 0 24 24" width={32} height={32} fill="none" aria-hidden="true" {...props}>
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9ZM7.5 12C7.5 9.51472 9.51472 7.5 12 7.5C14.4853 7.5 16.5 9.51472 16.5 12C16.5 14.4853 14.4853 16.5 12 16.5C9.51472 16.5 7.5 14.4853 7.5 12Z"
+        fill="currentColor"
+      />
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M7.875 4.125C5.80393 4.125 4.125 5.80393 4.125 7.875V16.125C4.125 18.1961 5.80393 19.875 7.875 19.875H16.125C18.1961 19.875 19.875 18.1961 19.875 16.125V7.875C19.875 5.80393 18.1961 4.125 16.125 4.125H7.875ZM2.625 7.875C2.625 4.97551 4.97551 2.625 7.875 2.625H16.125C19.0245 2.625 21.375 4.97551 21.375 7.875V16.125C21.375 19.0245 19.0245 21.375 16.125 21.375H7.875C4.97551 21.375 2.625 19.0245 2.625 16.125V7.875Z"
+        fill="currentColor"
+      />
+      <path
+        d="M16.875 8.25C17.4963 8.25 18 7.74632 18 7.125C18 6.50368 17.4963 6 16.875 6C16.2537 6 15.75 6.50368 15.75 7.125C15.75 7.74632 16.2537 8.25 16.875 8.25Z"
+        fill="currentColor"
+      />
     </svg>
   );
 }
@@ -273,8 +289,8 @@ export function PlusIcon(props: IconProps) {
 export function GlobeIcon(props: IconProps) {
   return (
     <svg viewBox="0 0 24 24" width={32} height={32} aria-hidden="true" {...props}>
-      <circle cx="12" cy="12" r="9" {...base} />
-      <path d="M3.5 12h17M12 3c2.5 2.7 2.5 15.3 0 18M12 3c-2.5 2.7-2.5 15.3 0 18" {...base} />
+      <circle cx="12" cy="12" r="9" {...thin} />
+      <path d="M3.5 12h17M12 3c2.5 2.7 2.5 15.3 0 18M12 3c-2.5 2.7-2.5 15.3 0 18" {...thin} />
     </svg>
   );
 }
