@@ -9,7 +9,16 @@ export function MoreFromArtist() {
     <section className="py-section">
       <Container>
         <Reveal>
-          <SectionHeading title="More from this artist" />
+          <SectionHeading
+            title="More from this artist"
+            action={
+              <span className="hidden sm:block">
+                <Button href="/artist" variant="outline">
+                  Go To Artist Page
+                </Button>
+              </span>
+            }
+          />
         </Reveal>
 
         <ul className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
@@ -20,8 +29,8 @@ export function MoreFromArtist() {
           ))}
         </ul>
 
-        <Reveal className="mt-10">
-          <Button href="/artist" variant="outline" fullWidth className="sm:w-auto">
+        <Reveal className="mt-10 sm:hidden">
+          <Button href="/artist" variant="outline" fullWidth>
             Go To Artist Page
           </Button>
         </Reveal>
