@@ -33,7 +33,7 @@ export const Field = forwardRef<HTMLInputElement, FieldProps>(function Field(
 
       <div
         className={cn(
-          "bg-surface flex items-center gap-3 rounded-[20px] px-5 py-3 transition-colors",
+          "flex items-center gap-3 rounded-[20px] bg-white px-5 py-3 transition-colors",
           "focus-within:ring-brand focus-within:ring-2",
           error && "ring-2 ring-red-400",
         )}
@@ -49,7 +49,7 @@ export const Field = forwardRef<HTMLInputElement, FieldProps>(function Field(
           ref={ref}
           aria-invalid={error ? true : undefined}
           aria-describedby={error ? errorId : undefined}
-          className="text-ink w-full bg-transparent outline-none placeholder:text-neutral-500"
+          className="text-canvas w-full bg-transparent outline-none placeholder:text-neutral-500"
           {...props}
         />
       </div>
