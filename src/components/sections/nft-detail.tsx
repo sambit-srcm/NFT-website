@@ -89,17 +89,6 @@ export function NftDetail() {
                 <Countdown />
               </div>
 
-              <dl className="mt-6 flex items-end justify-between">
-                <div>
-                  <dt className="text-ink-subtle text-xs">Price</dt>
-                  <dd className="mt-1 font-mono">{nft.price.toFixed(2)} ETH</dd>
-                </div>
-                <div className="text-right">
-                  <dt className="text-ink-subtle text-xs">Highest Bid</dt>
-                  <dd className="mt-1 font-mono">{nft.highestBid.toFixed(2)} wETH</dd>
-                </div>
-              </dl>
-
               <Button href="#bid" size="lg" fullWidth icon={<EyeIcon />} className="mt-6">
                 Place Bid
               </Button>
