@@ -35,9 +35,9 @@ export function CopyAddress({ address }: { address: string }) {
     <button
       type="button"
       onClick={handleCopy}
-      className="bg-surface hover:bg-surface-raised inline-flex items-center gap-3 rounded-[20px] px-5 py-3 font-mono text-sm transition-colors"
+      className="bg-brand hover:bg-brand-strong text-ink inline-flex items-center gap-3 rounded-[20px] px-5 py-3 font-mono text-sm transition-colors"
     >
-      <span aria-hidden="true" className="text-brand">
+      <span aria-hidden="true">
         <CopyIcon />
       </span>
       <span>{shorten(address)}</span>
