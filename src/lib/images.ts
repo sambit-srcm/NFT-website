@@ -1,11 +1,6 @@
-/**
- * Maps `Art` and `Avatar` seeds to the artwork exported from the Figma file.
- *
- * Seeds that are absent fall back to the placeholder image, so a missing
- * export degrades to a placeholder rather than a broken image.
- */
+/** Maps `Art`/`Avatar` seeds to artwork files. A seed with no match falls back to a placeholder image. */
 
-/** Collection tiles double as NFT artwork in the design, so some files are shared. */
+/** Collection tiles double as NFT artwork, so some files are reused. */
 export const ART_BY_SEED: Record<string, string> = {
   // Landing page.
   "space-walking": "/images/nfts/space-walking.png",
@@ -86,13 +81,13 @@ const AVATAR_BY_NAME: Record<string, string> = {
   bekind2robots: "/images/avatars/bekind2robots.png",
   moondancer: "/images/avatars/moondancer.png",
   nebulakid: "/images/avatars/nebulakid.png",
-  // The design reuses this avatar for Spaceone.
+  // Reused for Spaceone, which has no avatar of its own.
   spaceone: "/images/avatars/dotgu.png",
-  // The design reuses this avatar for Orbitian.
+  // Reused for Orbitian, which has no avatar of its own.
   orbitian: "/images/avatars/rustyrobot.png",
 };
 
-/** Ranked creators are stock names, so they share the design's single avatar. */
+/** Ranked creators are stock names, so they all share one avatar. */
 const RANKED_AVATAR = "/images/avatars/ranked-creator.png";
 
 const RANKED_NAME = /^[A-Z][a-z]+ [A-Z]/;
