@@ -209,15 +209,6 @@ export const MARKETPLACE_TABS = [
 
 export type MarketplaceTabId = (typeof MARKETPLACE_TABS)[number]["id"];
 
-export const SORT_OPTIONS = [
-  { id: "recent", label: "Recently added" },
-  { id: "price-low", label: "Price: low to high" },
-  { id: "price-high", label: "Price: high to low" },
-  { id: "name", label: "Name: A to Z" },
-] as const;
-
-export type SortId = (typeof SORT_OPTIONS)[number]["id"];
-
 export type RankedCreator = {
   rank: number;
   name: string;
