@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it } from "vitest";
 
@@ -31,7 +31,15 @@ describe("ArtistPage", () => {
     render(<ArtistPage />);
 
     expect(screen.getByRole("tab", { name: /created/i })).toHaveAttribute("aria-selected", "true");
-    expect(screen.getByRole("heading", { level: 3, name: "Distant Galaxy" })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { level: 3, name: "Space Walking" })).toBeInTheDocument();
+  });
+
+  it("only shows NFTs created by the artist on the Created tab", () => {
+    render(<ArtistPage />);
+
+    const panel = screen.getByRole("tabpanel");
+    const cards = within(panel).getAllByRole("heading", { level: 3 });
+    expect(within(panel).getAllByText("Animakid")).toHaveLength(cards.length);
   });
 
   it("switches the grid when another tab is selected", async () => {
@@ -43,7 +51,7 @@ describe("ArtistPage", () => {
     expect(screen.getByRole("tab", { name: /owned/i })).toHaveAttribute("aria-selected", "true");
     expect(screen.getByRole("heading", { level: 3, name: "Magic Mushroom" })).toBeInTheDocument();
     expect(
-      screen.queryByRole("heading", { level: 3, name: "Distant Galaxy" }),
+      screen.queryByRole("heading", { level: 3, name: "Space Walking" }),
     ).not.toBeInTheDocument();
   });
 });

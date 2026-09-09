@@ -141,9 +141,31 @@ export const ARTIST_TABS = [
 
 export type ArtistTabId = (typeof ARTIST_TABS)[number]["id"];
 
-/** Which NFTs appear under each tab. */
-export const ARTIST_PORTFOLIO: Record<ArtistTabId, Nft[]> = {
-  created: NFTS,
+/** Which NFTs appear under the Created and Owned tabs. */
+export const ARTIST_PORTFOLIO: Record<Exclude<ArtistTabId, "collection">, Nft[]> = {
+  created: [
+    {
+      id: "space-walking-02",
+      name: "Space Walking",
+      creator: ARTIST.name,
+      price: 1.28,
+      highestBid: 0.22,
+    },
+    {
+      id: "icecream-dreams",
+      name: "Icecream Dreams",
+      creator: ARTIST.name,
+      price: 1.55,
+      highestBid: 0.31,
+    },
+    {
+      id: "colorful-companion",
+      name: "Colorful Companion",
+      creator: ARTIST.name,
+      price: 1.79,
+      highestBid: 0.44,
+    },
+  ],
   owned: [
     {
       id: "magic-mushroom",
@@ -154,16 +176,10 @@ export const ARTIST_PORTFOLIO: Record<ArtistTabId, Nft[]> = {
     },
     { id: "dsgn-animal", name: "Dsgn Animal", creator: "MrFox", price: 1.98, highestBid: 0.42 },
   ],
-  collection: [
-    {
-      id: "disco-machine",
-      name: "Disco Machine",
-      creator: "BeKind2Robots",
-      price: 3.12,
-      highestBid: 1.04,
-    },
-  ],
 };
+
+/** Collections shown under the Collection tab, with the same multi-image tile as Trending Collection. */
+export const ARTIST_COLLECTIONS: Collection[] = COLLECTIONS;
 
 /** Listings shown on the marketplace browse page. */
 export const MARKETPLACE_NFTS: Nft[] = [

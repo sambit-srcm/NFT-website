@@ -3,17 +3,16 @@
 import { useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 
+import { CollectionCard } from "@/components/ui/collection-card";
 import { Container } from "@/components/ui/container";
 import { NftCard } from "@/components/ui/nft-card";
 import { cn } from "@/lib/cn";
-import { ARTIST_PORTFOLIO, ARTIST_TABS } from "@/lib/data";
+import { ARTIST_COLLECTIONS, ARTIST_PORTFOLIO, ARTIST_TABS } from "@/lib/data";
 import type { ArtistTabId } from "@/lib/data";
 
 export function ArtistPortfolio() {
   const [active, setActive] = useState<ArtistTabId>("created");
   const reduceMotion = useReducedMotion();
-
-  const items = ARTIST_PORTFOLIO[active];
 
   return (
     <section className="py-section">
@@ -68,11 +67,17 @@ export function ArtistPortfolio() {
             transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
             className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3"
           >
-            {items.map((nft) => (
-              <li key={nft.id}>
-                <NftCard nft={nft} />
-              </li>
-            ))}
+            {active === "collection"
+              ? ARTIST_COLLECTIONS.map((collection) => (
+                  <li key={collection.id}>
+                    <CollectionCard collection={collection} />
+                  </li>
+                ))
+              : ARTIST_PORTFOLIO[active].map((nft) => (
+                  <li key={nft.id}>
+                    <NftCard nft={nft} />
+                  </li>
+                ))}
           </motion.ul>
         </div>
       </Container>
