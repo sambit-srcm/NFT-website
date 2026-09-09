@@ -36,7 +36,7 @@ export function RankingsBoard() {
         <div
           role="tablist"
           aria-label="Ranking period"
-          className="mt-8 flex overflow-x-auto border-b border-white/10"
+          className="mt-8 flex border-b border-white/10"
         >
           {RANKING_PERIODS.map((option) => {
             const selected = option.id === period;
@@ -49,90 +49,50 @@ export function RankingsBoard() {
                 aria-selected={selected}
                 onClick={() => setPeriod(option.id)}
                 className={cn(
-                  "font-display shrink-0 border-b-4 px-5 py-4 text-base font-semibold transition-colors sm:text-lg lg:px-10",
+                  "font-display flex-1 border-b-4 px-5 py-4 text-center text-base font-semibold transition-colors sm:text-lg lg:px-10",
                   selected
                     ? "border-brand text-ink"
                     : "text-ink-muted hover:text-ink border-transparent",
                 )}
               >
-                {option.label}
+                <span aria-hidden="true" className="sm:hidden">
+                  {option.shortLabel}
+                </span>
+                <span className="sr-only sm:not-sr-only">{option.label}</span>
               </button>
             );
           })}
         </div>
 
-        {/*
-         * Two presentations of the same rows. Each is display:none at the other
-         * breakpoint, so only one is ever exposed to assistive technology.
-         */}
-        <table className="mt-10 hidden w-full text-left lg:table">
-          <caption className="sr-only">
-            Top creators, {RANKING_PERIODS.find((p) => p.id === period)?.label}
-          </caption>
-          <thead className="text-ink-subtle border-b border-white/10 font-mono text-sm">
-            <tr>
-              <th scope="col" className="pb-4 font-normal">
-                #
-              </th>
-              <th scope="col" className="pb-4 font-normal">
-                Artist
-              </th>
-              <th scope="col" className="pb-4 font-normal">
-                Change
-              </th>
-              <th scope="col" className="pb-4 text-right font-normal">
-                NFTs Sold
-              </th>
-              <th scope="col" className="pb-4 text-right font-normal">
-                Volume
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {rows.map((row) => (
-              <tr key={row.name} className="border-b border-white/5">
-                <td className="text-ink-muted py-5 font-mono">{row.rank}</td>
-                <td className="py-5">
-                  <div className="flex items-center gap-4">
-                    <Avatar seed={row.name} className="size-10" />
-                    <span className="font-semibold">{row.name}</span>
-                  </div>
-                </td>
-                <td className="py-5">
-                  <ChangeValue change={row.change} />
-                </td>
-                <td className="py-5 text-right font-mono">{row.nftsSold}</td>
-                <td className="py-5 text-right font-mono">{row.volume.toFixed(2)} ETH</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+        <div className="text-ink-subtle mt-10 flex items-center justify-between rounded-[20px] border border-white/10 px-4 py-3 font-mono text-sm">
+          <span>Artist</span>
+          <div className="flex items-center gap-8">
+            <span className="hidden w-20 sm:block">Change</span>
+            <span className="hidden w-20 text-right xl:block">NFTs Sold</span>
+            <span className="w-24 text-right">Volume</span>
+          </div>
+        </div>
 
-        <ul className="mt-10 space-y-4 lg:hidden">
+        <ul className="mt-4 space-y-4">
           {rows.map((row) => (
-            <li key={row.name} className="bg-surface rounded-[20px] p-4">
+            <li
+              key={row.name}
+              className="bg-surface flex items-center justify-between gap-4 rounded-[20px] p-4"
+            >
               <div className="flex items-center gap-4">
                 <span className="text-ink-muted w-6 shrink-0 font-mono">{row.rank}</span>
                 <Avatar seed={row.name} className="size-10 shrink-0" />
                 <span className="font-semibold">{row.name}</span>
               </div>
-
-              <dl className="mt-4 grid grid-cols-3 gap-3 text-sm">
-                <div>
-                  <dt className="text-ink-subtle text-xs">Change</dt>
-                  <dd className="mt-1">
-                    <ChangeValue change={row.change} />
-                  </dd>
-                </div>
-                <div>
-                  <dt className="text-ink-subtle text-xs">NFTs Sold</dt>
-                  <dd className="mt-1 font-mono">{row.nftsSold}</dd>
-                </div>
-                <div className="text-right">
-                  <dt className="text-ink-subtle text-xs">Volume</dt>
-                  <dd className="mt-1 font-mono">{row.volume.toFixed(2)} ETH</dd>
-                </div>
-              </dl>
+              <div className="flex items-center gap-8">
+                <span className="hidden w-20 sm:block">
+                  <ChangeValue change={row.change} />
+                </span>
+                <span className="hidden w-20 text-right font-mono xl:block">{row.nftsSold}</span>
+                <span className="w-24 text-right font-mono text-sm">
+                  {row.volume.toFixed(2)} ETH
+                </span>
+              </div>
             </li>
           ))}
         </ul>
