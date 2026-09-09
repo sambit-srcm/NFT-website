@@ -30,25 +30,37 @@ export function ArtistProfile() {
       <Art
         seed={`${ARTIST.handle}-cover`}
         rounded="rounded-none"
-        className="h-40 w-full sm:h-64 lg:h-[25rem]"
+        className="h-40 w-full sm:h-64 xl:h-[25rem]"
       />
 
       <Container>
         {/* The avatar straddles the cover edge, as in the design. */}
-        <div className="-mt-12 sm:-mt-16 lg:-mt-20">
+        <div className="-mt-12 sm:-mt-16 xl:-mt-20">
           <Avatar
             seed={ARTIST.handle}
-            className="border-canvas size-24 border-4 sm:size-32 lg:size-[10.5rem]"
+            className="border-canvas size-24 border-4 sm:size-32 xl:size-[10.5rem]"
           />
         </div>
 
-        <div className="mt-6 grid gap-8 lg:grid-cols-[1fr_auto] lg:items-start">
-          <Reveal>
-            <h1 className="font-display text-[28px] leading-tight font-semibold sm:text-[38px] lg:text-[51px]">
+        <div className="mt-6 grid gap-6 [grid-template-areas:'name'_'copy'_'details'] xl:grid-cols-[1fr_auto] xl:items-start xl:gap-8 xl:[grid-template-areas:'name_copy'_'details_copy']">
+          <Reveal className="[grid-area:name]">
+            <h1 className="font-display text-[28px] leading-tight font-semibold sm:text-[38px] xl:text-[51px]">
               {ARTIST.name}
             </h1>
+          </Reveal>
 
-            <dl className="mt-6 flex flex-wrap gap-8">
+          <Reveal
+            delay={0.04}
+            className="flex flex-wrap items-center gap-4 [grid-area:copy] xl:justify-end"
+          >
+            <CopyAddress address={ARTIST.address} />
+            <Button href="#follow" variant="outline" icon={<PlusIcon />}>
+              Follow
+            </Button>
+          </Reveal>
+
+          <Reveal delay={0.08} className="[grid-area:details]">
+            <dl className="flex flex-wrap gap-8">
               {/*
                * Reversed so the value reads above its label without
                * duplicating the label for screen readers.
@@ -78,13 +90,6 @@ export function ArtistProfile() {
                 </li>
               ))}
             </ul>
-          </Reveal>
-
-          <Reveal delay={0.08} className="flex flex-wrap items-center gap-4 lg:justify-end">
-            <CopyAddress address={ARTIST.address} />
-            <Button href="#follow" icon={<PlusIcon />}>
-              Follow
-            </Button>
           </Reveal>
         </div>
       </Container>
