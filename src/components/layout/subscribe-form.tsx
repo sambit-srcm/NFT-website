@@ -7,13 +7,11 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/cn";
 
 /**
- * Newsletter capture. There is no backend yet, so the form validates locally
- * and reports success without pretending a request was sent.
+ * Newsletter capture with local-only validation (no backend yet).
  *
- * By default the email field and Subscribe button split into two separate
- * fields on mobile and merge into one flush pill from `sm:` up. Pass `merged`
- * to always render the flush pill, regardless of breakpoint (used in the
- * footer, where there's no room for two full-width stacked fields).
+ * The email field and button split on mobile and merge into one pill from
+ * `sm:` up by default. Pass `merged` to keep the pill at every size — used
+ * in the footer, which has no room for stacked fields.
  */
 export function SubscribeForm({
   className,

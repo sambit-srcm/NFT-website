@@ -12,13 +12,7 @@ type FieldProps = ComponentPropsWithoutRef<"input"> & {
   error?: string;
 };
 
-/**
- * Text input with a visible, associated label.
- *
- * A placeholder is not a label: it disappears the moment the visitor types and
- * is not reliably announced, so every field gets a real label element. The
- * leading icon is decorative and hidden from assistive technology.
- */
+/** Text input with a real label (a placeholder alone isn't reliably announced). The leading icon is decorative. */
 export const Field = forwardRef<HTMLInputElement, FieldProps>(function Field(
   { id, label, icon, error, className, ...props },
   ref,

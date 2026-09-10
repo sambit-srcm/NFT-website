@@ -6,10 +6,9 @@ import { animate, useInView, useReducedMotion } from "framer-motion";
 /**
  * Counts from zero to `value` the first time it scrolls into view.
  *
- * The finished value is rendered in the markup, so it is correct before
- * hydration and for anyone with JavaScript disabled. The animation then writes
- * to the text node directly rather than through state, which avoids a re-render
- * on every frame. Under reduced motion nothing animates at all.
+ * Markup renders the finished value up front (works without JS or before
+ * hydration). The animation then writes straight to the text node, skipping
+ * a re-render per frame. Reduced motion skips the animation entirely.
  */
 export function CountUp({
   value,
