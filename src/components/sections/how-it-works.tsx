@@ -1,13 +1,7 @@
 import { Container, SectionHeading } from "@/components/ui/container";
 import { Reveal } from "@/components/ui/reveal";
-import { CoinsIcon, CollectionIcon, WalletIcon } from "@/components/icons";
+import { HOW_IT_WORKS_ICONS } from "@/constants/icons";
 import { STEPS } from "@/lib/data";
-
-const ICONS = {
-  wallet: WalletIcon,
-  collection: CollectionIcon,
-  earning: CoinsIcon,
-} as const;
 
 /** Homepage section walking through the 3 steps to start selling on the marketplace. */
 export function HowItWorks() {
@@ -20,7 +14,7 @@ export function HowItWorks() {
 
         <ol className="mt-10 grid gap-8 md:grid-cols-3">
           {STEPS.map((step, index) => {
-            const Icon = ICONS[step.id];
+            const Icon = HOW_IT_WORKS_ICONS[step.id];
 
             return (
               <Reveal as="li" key={step.id} delay={index * 0.1}>

@@ -5,23 +5,9 @@ import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { CopyAddress } from "@/components/ui/copy-address";
 import { Reveal } from "@/components/ui/reveal";
-import {
-  DiscordIcon,
-  GlobeIcon,
-  InstagramIcon,
-  PlusIcon,
-  TwitterIcon,
-  YoutubeIcon,
-} from "@/components/icons";
+import { PlusIcon } from "@/components/icons";
+import { ARTIST_SOCIALS } from "@/constants/social";
 import { ARTIST } from "@/lib/data";
-
-const SOCIALS = [
-  { label: "Website", href: "#website", Icon: GlobeIcon },
-  { label: "Discord", href: "#discord", Icon: DiscordIcon },
-  { label: "YouTube", href: "#youtube", Icon: YoutubeIcon },
-  { label: "Twitter", href: "#twitter", Icon: TwitterIcon },
-  { label: "Instagram", href: "#instagram", Icon: InstagramIcon },
-];
 
 /** Artist page's header: cover image, avatar, bio, stats, and follow button. */
 export function ArtistProfile() {
@@ -73,7 +59,7 @@ export function ArtistProfile() {
 
             <h2 className="text-ink-subtle mt-8 font-mono text-sm">Links</h2>
             <ul className="mt-2 flex flex-wrap items-center gap-4">
-              {SOCIALS.map(({ label, href, Icon }) => (
+              {ARTIST_SOCIALS.map(({ label, href, Icon }) => (
                 <li key={label}>
                   <Link
                     href={href}
