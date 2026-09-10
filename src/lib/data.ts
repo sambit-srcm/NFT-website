@@ -235,10 +235,10 @@ export type RankedCreator = {
 };
 
 export const RANKING_PERIODS = [
-  { id: "today", label: "Today" },
-  { id: "week", label: "This Week" },
-  { id: "month", label: "This Month" },
-  { id: "all", label: "All Time" },
+  { id: "today", label: "Today", shortLabel: "1D" },
+  { id: "week", label: "This Week", shortLabel: "7D" },
+  { id: "month", label: "This Month", shortLabel: "30D" },
+  { id: "all", label: "All Time", shortLabel: "All" },
 ] as const;
 
 export type RankingPeriodId = (typeof RANKING_PERIODS)[number]["id"];
