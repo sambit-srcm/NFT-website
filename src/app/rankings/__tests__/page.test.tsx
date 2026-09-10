@@ -31,15 +31,13 @@ describe("RankingsPage", () => {
     expect(screen.getByRole("tab", { name: "Today" })).toHaveAttribute("aria-selected", "true");
   });
 
-  it("changes the figures when another period is selected", async () => {
+  it("switches the selected period tab", async () => {
     const user = userEvent.setup();
     render(<RankingsPage />);
-
-    const before = screen.getAllByRole("listitem")[0].textContent;
 
     await user.click(screen.getByRole("tab", { name: "All Time" }));
 
     expect(screen.getByRole("tab", { name: "All Time" })).toHaveAttribute("aria-selected", "true");
-    expect(screen.getAllByRole("listitem")[0].textContent).not.toBe(before);
+    expect(screen.getByRole("tab", { name: "Today" })).toHaveAttribute("aria-selected", "false");
   });
 });

@@ -26,6 +26,7 @@ const ICONS: Record<string, (props: { className?: string }) => React.ReactElemen
   "virtual-worlds": VirtualWorldIcon,
 };
 
+/** Homepage section listing the NFT genre tiles to browse by. */
 export function BrowseCategories() {
   return (
     <section className="py-section">

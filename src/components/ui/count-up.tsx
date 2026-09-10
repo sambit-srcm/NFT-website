@@ -4,12 +4,9 @@ import { useEffect, useRef } from "react";
 import { animate, useInView, useReducedMotion } from "framer-motion";
 
 /**
- * Counts from zero to `value` the first time it scrolls into view.
- *
- * The finished value is rendered in the markup, so it is correct before
- * hydration and for anyone with JavaScript disabled. The animation then writes
- * to the text node directly rather than through state, which avoids a re-render
- * on every frame. Under reduced motion nothing animates at all.
+ * Shows the final number right away, so it still works without JavaScript,
+ * then animates up to it once the page has loaded. Skips the animation
+ * entirely for reduced motion.
  */
 export function CountUp({
   value,

@@ -1,10 +1,10 @@
 /**
- * Landing page content.
- *
- * Kept in one module so copy can be edited without touching layout, and so it
- * can later be swapped for a CMS query with no change to the sections.
+ * All the site's mock content, in one place until there's a real backend.
+ * Swapping this for API/CMS calls later won't touch any component.
  */
 
+// A themed group of NFTs by one creator. Used on the homepage's Trending
+// Collection section and the artist page's Collection tab.
 export type Collection = {
   id: string;
   name: string;
@@ -19,12 +19,14 @@ export const COLLECTIONS: Collection[] = [
   { id: "disco-machines", name: "Disco Machines", creator: "BeKind2Robots", more: 1025 },
 ];
 
+// The three stat counters under the homepage's hero banner.
 export const STATS = [
   { value: 240, suffix: "k+", label: "Total Sale" },
   { value: 100, suffix: "k+", label: "Auctions" },
   { value: 240, suffix: "k+", label: "Artists" },
 ] as const;
 
+// One row in the homepage's Top Creators leaderboard.
 export type Creator = {
   rank: number;
   name: string;
@@ -47,6 +49,7 @@ export const CREATORS: Creator[] = [
   { rank: 12, name: "Ghiblier", sales: 6.32 },
 ];
 
+// The genre tiles in the homepage's Browse Categories section.
 export type Category = { id: string; label: string };
 
 export const CATEGORIES: Category[] = [
@@ -60,6 +63,7 @@ export const CATEGORIES: Category[] = [
   { id: "virtual-worlds", label: "Virtual Worlds" },
 ];
 
+// The shape every NFT card uses, across every page.
 export type Nft = {
   id: string;
   name: string;
@@ -68,6 +72,7 @@ export type Nft = {
   highestBid: number;
 };
 
+// The homepage's Discover More NFTs section.
 export const NFTS: Nft[] = [
   {
     id: "distant-galaxy",
@@ -86,6 +91,7 @@ export const NFTS: Nft[] = [
   { id: "astrofiction", name: "AstroFiction", creator: "Spaceone", price: 1.63, highestBid: 0.33 },
 ];
 
+// The homepage's "How It Works" 3-step walkthrough.
 export const STEPS = [
   {
     id: "wallet",
@@ -104,6 +110,7 @@ export const STEPS = [
   },
 ] as const;
 
+// The wallet options on the Connect Wallet page.
 export type Wallet = { id: string; name: string };
 
 export const WALLETS: Wallet[] = [
@@ -112,6 +119,7 @@ export const WALLETS: Wallet[] = [
   { id: "coinbase", name: "Coinbase" },
 ];
 
+// The creator shown on the artist page.
 export type Artist = {
   handle: string;
   name: string;
@@ -132,7 +140,7 @@ export const ARTIST: Artist = {
   ],
 };
 
-/** Portfolio tabs. Counts are the totals shown on the tab, not the page size. */
+// The artist page's three tabs. Counts are just display numbers.
 export const ARTIST_TABS = [
   { id: "created", label: "Created", count: 302 },
   { id: "owned", label: "Owned", count: 67 },
@@ -141,7 +149,7 @@ export const ARTIST_TABS = [
 
 export type ArtistTabId = (typeof ARTIST_TABS)[number]["id"];
 
-/** Which NFTs appear under the Created and Owned tabs. */
+// NFTs under the artist page's Created and Owned tabs.
 export const ARTIST_PORTFOLIO: Record<Exclude<ArtistTabId, "collection">, Nft[]> = {
   created: [
     {
@@ -178,10 +186,10 @@ export const ARTIST_PORTFOLIO: Record<Exclude<ArtistTabId, "collection">, Nft[]>
   ],
 };
 
-/** Collections shown under the Collection tab, with the same multi-image tile as Trending Collection. */
+// The artist page's Collection tab, reusing the homepage's collections.
 export const ARTIST_COLLECTIONS: Collection[] = COLLECTIONS;
 
-/** Listings shown on the marketplace browse page. */
+// The marketplace page's listings.
 export const MARKETPLACE_NFTS: Nft[] = [
   {
     id: "magic-mushroom-0325",
@@ -218,6 +226,7 @@ export const MARKETPLACE_NFTS: Nft[] = [
   },
 ];
 
+// The marketplace page's two tabs.
 export const MARKETPLACE_TABS = [
   { id: "nfts", label: "NFTs", count: 302 },
   { id: "collections", label: "Collections", count: 67 },
@@ -225,6 +234,7 @@ export const MARKETPLACE_TABS = [
 
 export type MarketplaceTabId = (typeof MARKETPLACE_TABS)[number]["id"];
 
+// One row in the rankings page's leaderboard.
 export type RankedCreator = {
   rank: number;
   name: string;
@@ -234,6 +244,7 @@ export type RankedCreator = {
   volume: number;
 };
 
+// The rankings page's period tabs. shortLabel shows on narrow screens.
 export const RANKING_PERIODS = [
   { id: "today", label: "Today", shortLabel: "1D" },
   { id: "week", label: "This Week", shortLabel: "7D" },
@@ -243,6 +254,7 @@ export const RANKING_PERIODS = [
 
 export type RankingPeriodId = (typeof RANKING_PERIODS)[number]["id"];
 
+// The 20 creators on the rankings page.
 const RANKED_NAMES = [
   "Jaydon Ekstrom Bothman",
   "Ruben Carder",
@@ -266,31 +278,24 @@ const RANKED_NAMES = [
   "Adison Aminoff",
 ];
 
-/**
- * Rankings are derived rather than hand-written so each period returns a
- * distinct, stable ordering without twenty rows repeated four times.
- */
-function buildRankings(seed: number): RankedCreator[] {
-  return RANKED_NAMES.map((name, index) => {
-    const drift = ((index * 7 + seed * 13) % 19) - 6;
+// Every creator and period uses the same fixed figures.
+const RANKED_CREATORS: RankedCreator[] = RANKED_NAMES.map((name, index) => ({
+  rank: index + 1,
+  name,
+  change: 1.41,
+  nftsSold: 602,
+  volume: 12.4,
+}));
 
-    return {
-      rank: index + 1,
-      name,
-      change: Number((drift / 2 + 1.41).toFixed(2)),
-      nftsSold: 602 - index * 17 - seed * 9,
-      volume: Number((12.4 - index * 0.31 - seed * 0.4).toFixed(2)),
-    };
-  });
-}
-
+// Rows shown per period tab. All four periods share the same rows.
 export const RANKINGS: Record<RankingPeriodId, RankedCreator[]> = {
-  today: buildRankings(0),
-  week: buildRankings(1),
-  month: buildRankings(2),
-  all: buildRankings(3),
+  today: RANKED_CREATORS,
+  week: RANKED_CREATORS,
+  month: RANKED_CREATORS,
+  all: RANKED_CREATORS,
 };
 
+// The NFT shown on the NFT detail page.
 export type NftDetail = {
   id: string;
   name: string;
@@ -304,6 +309,7 @@ export type NftDetail = {
   links: Array<{ label: string; href: string }>;
 };
 
+// The one NFT the detail page displays.
 export const NFT_DETAIL: NftDetail = {
   id: "the-orbitians",
   name: "The Orbitians",

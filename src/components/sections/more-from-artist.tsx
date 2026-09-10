@@ -4,6 +4,7 @@ import { NftCard } from "@/components/ui/nft-card";
 import { Reveal } from "@/components/ui/reveal";
 import { MORE_FROM_ARTIST } from "@/lib/data";
 
+/** NFT detail page section showing other work by the same creator. */
 export function MoreFromArtist() {
   return (
     <section className="py-section">

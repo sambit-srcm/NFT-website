@@ -1,13 +1,7 @@
 import { Art, Avatar } from "@/components/ui/art";
 import type { Collection } from "@/lib/data";
 
-/**
- * Collection tile with a primary image plus two secondary thumbnails and a
- * "+N" count, matching the multi-image treatment in Figma.
- *
- * Extracted so Trending Collection and the artist's Collection tab render
- * the same card rather than each maintaining its own copy of the markup.
- */
+/** Shared by Trending Collection and the artist page's Collection tab. */
 export function CollectionCard({ collection }: { collection: Collection }) {
   return (
     <>

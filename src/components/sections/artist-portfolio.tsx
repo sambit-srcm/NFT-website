@@ -10,6 +10,7 @@ import { cn } from "@/lib/cn";
 import { ARTIST_COLLECTIONS, ARTIST_PORTFOLIO, ARTIST_TABS } from "@/lib/data";
 import type { ArtistTabId } from "@/lib/data";
 
+/** Artist page's Created/Owned/Collection tabs and the grid underneath them. */
 export function ArtistPortfolio() {
   const [active, setActive] = useState<ArtistTabId>("created");
   const reduceMotion = useReducedMotion();
@@ -17,10 +18,6 @@ export function ArtistPortfolio() {
   return (
     <section className="py-section">
       <Container>
-        {/*
-         * A tablist rather than links: switching tabs filters in place and does
-         * not navigate, so arrow-key semantics are what visitors expect.
-         */}
         <div role="tablist" aria-label="Artist portfolio" className="flex border-b border-white/10">
           {ARTIST_TABS.map((tab) => {
             const selected = tab.id === active;
@@ -54,12 +51,6 @@ export function ArtistPortfolio() {
           aria-labelledby={`tab-${active}`}
           className="mt-10"
         >
-          {/*
-           * Keyed on the active tab so React swaps the list outright and the
-           * new grid animates in. An exit animation was tried first, but a
-           * grid that has to empty before it refills reads as a flash of
-           * nothing, and leaves the panel blank if the exit never completes.
-           */}
           <motion.ul
             key={active}
             initial={reduceMotion ? false : { opacity: 0, y: 12 }}

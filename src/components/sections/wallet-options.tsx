@@ -13,6 +13,7 @@ const ICONS: Record<string, (props: { className?: string }) => React.ReactElemen
   coinbase: CoinbaseIcon,
 };
 
+/** The Connect Wallet page's list of wallet providers to choose from. */
 export function WalletOptions() {
   const reduceMotion = useReducedMotion();
 
@@ -28,10 +29,6 @@ export function WalletOptions() {
 
         return (
           <motion.li key={wallet.id} variants={reduceMotion ? undefined : fadeUp}>
-            {/*
-             * A link, not a button: choosing a provider hands off to that
-             * wallet's own connection flow rather than acting on this page.
-             */}
             <Link
               href={`#${wallet.id}`}
               className="bg-surface hover:bg-surface-raised hover:border-brand flex items-center gap-4 rounded-[20px] border-2 border-transparent px-6 py-5 transition-colors motion-safe:hover:-translate-y-0.5"

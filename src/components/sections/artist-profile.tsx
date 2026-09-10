@@ -23,10 +23,10 @@ const SOCIALS = [
   { label: "Instagram", href: "#instagram", Icon: InstagramIcon },
 ];
 
+/** Artist page's header: cover image, avatar, bio, stats, and follow button. */
 export function ArtistProfile() {
   return (
     <section>
-      {/* Cover is shorter on small screens so the profile is not pushed off-screen. */}
       <Art
         seed={`${ARTIST.handle}-cover`}
         rounded="rounded-none"
@@ -34,7 +34,6 @@ export function ArtistProfile() {
       />
 
       <Container>
-        {/* The avatar straddles the cover edge, as in the design. */}
         <div className="-mt-12 sm:-mt-16 xl:-mt-20">
           <Avatar
             seed={ARTIST.handle}
@@ -61,10 +60,6 @@ export function ArtistProfile() {
 
           <Reveal delay={0.08} className="[grid-area:details]">
             <dl className="flex flex-wrap gap-8">
-              {/*
-               * Reversed so the value reads above its label without
-               * duplicating the label for screen readers.
-               */}
               {ARTIST.stats.map((stat) => (
                 <div key={stat.label} className="flex flex-col-reverse">
                   <dt className="text-ink-subtle font-mono text-sm">{stat.label}</dt>

@@ -8,6 +8,7 @@ import { Reveal } from "@/components/ui/reveal";
 import { EyeIcon, ExternalLinkIcon } from "@/components/icons";
 import { NFT_DETAIL } from "@/lib/data";
 
+/** The NFT detail page: full write-up, creator, tags, and the bid panel. */
 export function NftDetail() {
   const nft = NFT_DETAIL;
 
@@ -76,10 +77,6 @@ export function NftDetail() {
             </Reveal>
           </div>
 
-          {/*
-           * The auction panel leads on mobile, where it would otherwise sit
-           * below a long description and be missed.
-           */}
           <Reveal delay={0.08} className="order-first lg:order-none">
             <section aria-labelledby="auction-heading" className="bg-surface rounded-[20px] p-6">
               <h2 id="auction-heading" className="text-ink-subtle font-mono text-sm">
