@@ -10,6 +10,7 @@ import { cn } from "@/lib/cn";
 import { MARKETPLACE_NFTS, MARKETPLACE_TABS } from "@/lib/data";
 import type { MarketplaceTabId } from "@/lib/data";
 
+/** The marketplace page: searchable, tabbed grid of NFT listings. */
 export function MarketplaceBrowser() {
   const [query, setQuery] = useState("");
   const [tab, setTab] = useState<MarketplaceTabId>("nfts");

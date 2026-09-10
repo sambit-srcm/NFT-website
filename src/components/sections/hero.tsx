@@ -6,6 +6,7 @@ import { Reveal } from "@/components/ui/reveal";
 import { RocketIcon } from "@/components/icons";
 import { STATS } from "@/lib/data";
 
+/** The homepage's top banner: headline, stat counters, and a featured NFT card. */
 export function Hero() {
   return (
     <section className="py-section lg:py-section-lg">

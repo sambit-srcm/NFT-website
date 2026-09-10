@@ -8,6 +8,7 @@ import { COLLECTIONS } from "@/lib/data";
 
 const FEATURED = COLLECTIONS.find((collection) => collection.id === "magic-mushrooms")!;
 
+/** Homepage banner for one featured NFT, with a live auction countdown. */
 export function NftHighlight() {
   return (
     <section className="relative flex items-end overflow-hidden py-16 xl:min-h-[640px] xl:py-24">

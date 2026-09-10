@@ -1,7 +1,7 @@
 import { Art, Avatar } from "@/components/ui/art";
 import type { Collection } from "@/lib/data";
 
-/** Collection tile: one big image, two thumbnails, and a "+N" count. Shared by Trending Collection and the artist page's Collection tab. */
+/** Shared by Trending Collection and the artist page's Collection tab. */
 export function CollectionCard({ collection }: { collection: Collection }) {
   return (
     <>
