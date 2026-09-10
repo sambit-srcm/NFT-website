@@ -1,11 +1,6 @@
 import type { Transition, Variants } from "framer-motion";
 
-/**
- * Shared motion language for the landing page.
- *
- * Every section reuses these so the whole page eases identically instead of
- * each component inventing its own timing.
- */
+/** Shared easing/timing so every section animates consistently. */
 
 export const EASE_OUT: Transition["ease"] = [0.22, 1, 0.36, 1];
 
@@ -23,10 +18,7 @@ export const fadeIn: Variants = {
   visible: { opacity: 1, transition: { duration: 0.5, ease: EASE_OUT } },
 };
 
-/**
- * Parent variant for lists. Children animate in sequence rather than together,
- * which reads as deliberate instead of a single flash.
- */
+/** Parent variant for lists — children animate in sequence, not all at once. */
 export const stagger = (staggerChildren = 0.08, delayChildren = 0): Variants => ({
   hidden: {},
   visible: {
