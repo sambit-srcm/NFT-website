@@ -4,29 +4,9 @@ import { Art } from "@/components/ui/art";
 import { squeezeEffect } from "@/components/ui/button";
 import { Container, SectionHeading } from "@/components/ui/container";
 import { Reveal } from "@/components/ui/reveal";
-import {
-  CameraIcon,
-  CollectibleIcon,
-  MusicIcon,
-  PaletteIcon,
-  SportIcon,
-  UtilityIcon,
-  VideoIcon,
-  VirtualWorldIcon,
-} from "@/components/icons";
+import { CATEGORY_ICONS } from "@/constants/icons";
 import { cn } from "@/lib/cn";
 import { CATEGORIES } from "@/lib/data";
-
-const ICONS: Record<string, (props: { className?: string }) => React.ReactElement> = {
-  art: PaletteIcon,
-  collectibles: CollectibleIcon,
-  music: MusicIcon,
-  photography: CameraIcon,
-  video: VideoIcon,
-  utility: UtilityIcon,
-  sport: SportIcon,
-  "virtual-worlds": VirtualWorldIcon,
-};
 
 /** Homepage section listing the NFT genre tiles to browse by. */
 export function BrowseCategories() {
@@ -39,7 +19,7 @@ export function BrowseCategories() {
 
         <ul className="mt-10 grid grid-cols-2 gap-5 md:grid-cols-3 lg:grid-cols-4">
           {CATEGORIES.map((category, index) => {
-            const Icon = ICONS[category.id];
+            const Icon = CATEGORY_ICONS[category.id];
 
             return (
               <Reveal as="li" key={category.id} delay={Math.min(index, 7) * 0.05}>

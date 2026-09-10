@@ -8,12 +8,7 @@ import { Button, squeezeEffect } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { cn } from "@/lib/cn";
 import { CloseIcon, LogoMark, MenuIcon, UserIcon } from "@/components/icons";
-
-const NAV_LINKS = [
-  { label: "Marketplace", href: "/marketplace" },
-  { label: "Rankings", href: "/rankings" },
-  { label: "Connect a wallet", href: "/connect-wallet" },
-];
+import { NAV_LINKS } from "@/constants/nav";
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
