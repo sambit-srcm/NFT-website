@@ -4,6 +4,7 @@ import { Avatar } from "@/components/ui/art";
 import { Button } from "@/components/ui/button";
 import { Container, SectionHeading } from "@/components/ui/container";
 import { Reveal } from "@/components/ui/reveal";
+import { RocketIcon } from "@/components/icons";
 import { CREATORS } from "@/lib/data";
 
 /** Homepage section showing a short leaderboard, linking to the full rankings page. */
@@ -16,7 +17,12 @@ export function TopCreators() {
             title="Top creators"
             description="Checkout Top Rated Creators on the NFT Marketplace"
             action={
-              <Button href="/rankings" variant="outline" className="hidden sm:inline-flex">
+              <Button
+                href="/rankings"
+                variant="outline"
+                icon={<RocketIcon />}
+                className="hidden sm:inline-flex"
+              >
                 View Rankings
               </Button>
             }
@@ -50,7 +56,7 @@ export function TopCreators() {
         </ol>
 
         <Reveal className="mt-8 sm:hidden">
-          <Button href="/rankings" variant="outline" fullWidth>
+          <Button href="/rankings" variant="outline" icon={<RocketIcon />} fullWidth>
             View Rankings
           </Button>
         </Reveal>
