@@ -57,6 +57,7 @@ export function SubscribeForm({
         />
         <Button
           type="submit"
+          squeeze={false}
           className={cn(
             "shrink-0",
             merged ? "rounded-l-[20px] rounded-r-none" : "sm:rounded-l-[20px] sm:rounded-r-none",

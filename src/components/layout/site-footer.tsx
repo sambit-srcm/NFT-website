@@ -2,20 +2,9 @@ import Link from "next/link";
 
 import { Container } from "@/components/ui/container";
 import { SubscribeForm } from "@/components/layout/subscribe-form";
-import { DiscordIcon, InstagramIcon, LogoMark, TwitterIcon, YoutubeIcon } from "@/components/icons";
-
-const EXPLORE_LINKS = [
-  { label: "Marketplace", href: "/marketplace" },
-  { label: "Rankings", href: "/rankings" },
-  { label: "Connect a wallet", href: "/connect-wallet" },
-];
-
-const SOCIALS = [
-  { label: "Discord", href: "#discord", Icon: DiscordIcon },
-  { label: "YouTube", href: "#youtube", Icon: YoutubeIcon },
-  { label: "Twitter", href: "#twitter", Icon: TwitterIcon },
-  { label: "Instagram", href: "#instagram", Icon: InstagramIcon },
-];
+import { LogoMark } from "@/components/icons";
+import { NAV_LINKS } from "@/constants/nav";
+import { SITE_SOCIALS } from "@/constants/social";
 
 export function SiteFooter() {
   return (
@@ -32,7 +21,7 @@ export function SiteFooter() {
             </p>
             <p className="text-ink-subtle mt-6">Join our community</p>
             <ul className="mt-3 flex items-center gap-3">
-              {SOCIALS.map(({ label, href, Icon }) => (
+              {SITE_SOCIALS.map(({ label, href, Icon }) => (
                 <li key={label}>
                   <Link
                     href={href}
@@ -49,7 +38,7 @@ export function SiteFooter() {
           <nav aria-label="Explore">
             <h2 className="font-display text-[22px] font-bold">Explore</h2>
             <ul className="mt-6 space-y-5">
-              {EXPLORE_LINKS.map((link) => (
+              {NAV_LINKS.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
