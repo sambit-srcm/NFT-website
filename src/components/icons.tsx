@@ -141,76 +141,127 @@ export function InstagramIcon(props: IconProps) {
   );
 }
 
+/** Category icons below are traced from the Figma source (Phosphor icon set), 100x100 viewBox. */
+const categoryIconBase = { ...base, strokeWidth: 3 };
+
 export function PaletteIcon(props: IconProps) {
   return (
-    <svg viewBox="0 0 24 24" width={28} height={28} aria-hidden="true" {...props}>
+    <svg viewBox="0 0 100 100" width={28} height={28} aria-hidden="true" {...props}>
       <path
-        d="M12 3a9 9 0 1 0 0 18c1.2 0 2-.8 2-1.8 0-.5-.2-.9-.5-1.2-.3-.3-.5-.7-.5-1.2 0-1 .8-1.8 1.8-1.8H16a5 5 0 0 0 5-5c0-3.9-4-7-9-7Z"
-        {...base}
+        d="M7.8125 84.375H35.9375C39.9549 84.375 43.8821 83.1837 47.2225 80.9517C50.5629 78.7198 53.1664 75.5474 54.7038 71.8358C56.2412 68.1241 56.6435 64.04 55.8597 60.0997C55.0759 56.1595 53.1414 52.5402 50.3006 49.6994C47.4598 46.8586 43.8405 44.9241 39.9003 44.1403C35.96 43.3565 31.8759 43.7588 28.1642 45.2962C24.4526 46.8336 21.2802 49.4371 19.0483 52.7775C16.8163 56.1179 15.625 60.0451 15.625 64.0625C15.625 78.125 7.8125 84.375 7.8125 84.375Z"
+        {...categoryIconBase}
       />
-      <path d="M7.5 12h.01M9.5 8h.01M14.5 7.5h.01M17.5 11h.01" {...base} />
+      <path
+        d="M43.9053 45.3906C51.4053 35.2734 70.4678 12.1094 87.8896 12.1094C87.8896 29.5312 64.7256 48.5938 54.6084 56.0938"
+        {...categoryIconBase}
+      />
+      <path
+        d="M51.9531 35.3906C57.246 38.3777 61.6223 42.754 64.6094 48.0469"
+        {...categoryIconBase}
+      />
     </svg>
   );
 }
 
 export function CollectibleIcon(props: IconProps) {
   return (
-    <svg viewBox="0 0 24 24" width={28} height={28} aria-hidden="true" {...props}>
-      <path d="m12 3 8 4.5v9L12 21l-8-4.5v-9L12 3Z M4 7.5 12 12l8-4.5M12 12v9" {...base} />
+    <svg viewBox="0 0 100 100" width={28} height={28} aria-hidden="true" {...props}>
+      <path
+        d="M14.3355 67.5784L23.7887 14.0237C23.8547 13.6195 24.0006 13.2325 24.2178 12.8853C24.4349 12.538 24.719 12.2375 25.0535 12.0011C25.388 11.7648 25.7662 11.5974 26.166 11.5087C26.5659 11.4201 26.9794 11.4119 27.3824 11.4846L48.9449 15.2737C49.7596 15.426 50.482 15.8919 50.9568 16.5713C51.4316 17.2506 51.6209 18.0891 51.484 18.9065L41.9918 72.7737C41.3417 76.4009 39.2977 79.6295 36.2972 81.7685C33.2966 83.9076 29.578 84.7872 25.9371 84.219C18.1637 82.969 12.9684 75.3518 14.3355 67.5784Z"
+        {...categoryIconBase}
+      />
+      <path
+        d="M46.21 48.7501L74.6865 38.3985C75.0737 38.2556 75.4853 38.1907 75.8977 38.2077C76.31 38.2247 76.7149 38.3232 77.089 38.4976C77.4631 38.6719 77.7989 38.9186 78.0771 39.2234C78.3553 39.5282 78.5704 39.8851 78.71 40.2735L86.21 60.8204C86.4866 61.5976 86.4447 62.4526 86.0935 63.199C85.7422 63.9454 85.1101 64.5226 84.335 64.8048L32.9287 83.5157"
+        {...categoryIconBase}
+      />
+      <path
+        d="M85.9375 63.4766V81.25C85.9375 82.0788 85.6083 82.8737 85.0222 83.4597C84.4362 84.0458 83.6413 84.375 82.8125 84.375H28.125"
+        {...categoryIconBase}
+      />
+      <circle cx="28.125" cy="70.3125" r="4.6875" fill="currentColor" />
     </svg>
   );
 }
 
 export function MusicIcon(props: IconProps) {
   return (
-    <svg viewBox="0 0 24 24" width={28} height={28} aria-hidden="true" {...props}>
-      <path d="M9 18V6l11-2v12" {...base} />
-      <circle cx="6.5" cy="18" r="2.5" {...base} />
-      <circle cx="17.5" cy="16" r="2.5" {...base} />
+    <svg viewBox="0 0 100 100" width={28} height={28} aria-hidden="true" {...props}>
+      <circle cx="70.3125" cy="67.1875" r="10.9375" {...categoryIconBase} />
+      <circle cx="20.3125" cy="79.6875" r="10.9375" {...categoryIconBase} />
+      <path d="M81.25 31.25L31.25 43.75" {...categoryIconBase} />
+      <path d="M31.25 79.6875V25L81.25 12.5V67.1875" {...categoryIconBase} />
     </svg>
   );
 }
 
 export function CameraIcon(props: IconProps) {
   return (
-    <svg viewBox="0 0 24 24" width={28} height={28} aria-hidden="true" {...props}>
-      <path d="M3 8h3l2-3h8l2 3h3v11H3z" {...base} />
-      <circle cx="12" cy="13" r="3.5" {...base} />
+    <svg viewBox="0 0 100 100" width={28} height={28} aria-hidden="true" {...props}>
+      <path
+        d="M81.25 81.25H18.75C17.0924 81.25 15.5027 80.5915 14.3306 79.4194C13.1585 78.2473 12.5 76.6576 12.5 75V31.25C12.5 29.5924 13.1585 28.0027 14.3306 26.8306C15.5027 25.6585 17.0924 25 18.75 25H31.25L37.5 15.625H62.5L68.75 25H81.25C82.9076 25 84.4973 25.6585 85.6694 26.8306C86.8415 28.0027 87.5 29.5924 87.5 31.25V75C87.5 76.6576 86.8415 78.2473 85.6694 79.4194C84.4973 80.5915 82.9076 81.25 81.25 81.25Z"
+        {...categoryIconBase}
+      />
+      <circle cx="50" cy="51.5625" r="14.0625" {...categoryIconBase} />
     </svg>
   );
 }
 
 export function VideoIcon(props: IconProps) {
   return (
-    <svg viewBox="0 0 24 24" width={28} height={28} aria-hidden="true" {...props}>
-      <rect x="3" y="6" width="12" height="12" rx="3" {...base} />
-      <path d="m15 12 6-3.5v11L15 12Z" {...base} />
+    <svg viewBox="0 0 100 100" width={28} height={28} aria-hidden="true" {...props}>
+      <path
+        d="M9.375 23.4375H59.375C62.6902 23.4375 65.8696 24.7545 68.2138 27.0987C70.558 29.4429 71.875 32.6223 71.875 35.9375V73.4375C71.875 74.2663 71.5458 75.0612 70.9597 75.6472C70.3737 76.2333 69.5788 76.5625 68.75 76.5625H18.75C15.4348 76.5625 12.2554 75.2455 9.91117 72.9013C7.56696 70.5571 6.25 67.3777 6.25 64.0625V26.5625C6.25 25.7337 6.57924 24.9388 7.16529 24.3528C7.75134 23.7667 8.5462 23.4375 9.375 23.4375V23.4375Z"
+        {...categoryIconBase}
+      />
+      <path d="M71.875 43.75L93.75 31.25V68.75L71.875 56.25" {...categoryIconBase} />
     </svg>
   );
 }
 
 export function UtilityIcon(props: IconProps) {
   return (
-    <svg viewBox="0 0 24 24" width={28} height={28} aria-hidden="true" {...props}>
-      <path d="M13 3 5 14h6l-1 7 8-11h-6l1-7Z" {...base} />
+    <svg viewBox="0 0 100 100" width={28} height={28} aria-hidden="true" {...props}>
+      <path d="M84.375 50V68.75" {...categoryIconBase} />
+      <path d="M75 59.375H93.75" {...categoryIconBase} />
+      <path d="M32.8125 15.625V31.25" {...categoryIconBase} />
+      <path d="M25 23.4375H40.625" {...categoryIconBase} />
+      <path d="M65.625 71.875V84.375" {...categoryIconBase} />
+      <path d="M59.375 78.125H71.875" {...categoryIconBase} />
+      <path
+        d="M72.8218 14.6987L14.7341 72.7864C13.5137 74.0068 13.5137 75.9854 14.7341 77.2058L22.8134 85.285C24.0338 86.5054 26.0124 86.5054 27.2328 85.285L85.3205 27.1973C86.5409 25.9769 86.5409 23.9983 85.3205 22.7779L77.2413 14.6987C76.0209 13.4783 74.0422 13.4783 72.8218 14.6987Z"
+        {...categoryIconBase}
+      />
+      <path d="M56.25 31.25L68.75 43.75" {...categoryIconBase} />
     </svg>
   );
 }
 
 export function SportIcon(props: IconProps) {
   return (
-    <svg viewBox="0 0 24 24" width={28} height={28} aria-hidden="true" {...props}>
-      <circle cx="12" cy="12" r="9" {...base} />
-      <path d="M3.5 9.5h17M3.5 14.5h17M12 3c-3 3-3 15 0 18M12 3c3 3 3 15 0 18" {...base} />
+    <svg viewBox="0 0 100 100" width={28} height={28} aria-hidden="true" {...props}>
+      <circle cx="50" cy="50" r="37.5" {...categoryIconBase} />
+      <path
+        d="M23.4375 23.5176C30.449 30.5474 34.383 40.0732 34.375 50.002C34.383 59.9307 30.449 69.4565 23.4375 76.4863"
+        {...categoryIconBase}
+      />
+      <path
+        d="M76.5642 23.5176C69.5608 30.5526 65.6289 40.0752 65.6289 50.002C65.6289 59.9287 69.5608 69.4513 76.5642 76.4863"
+        {...categoryIconBase}
+      />
+      <path d="M12.5 50H87.5" {...categoryIconBase} />
+      <path d="M50 12.5V87.5" {...categoryIconBase} />
     </svg>
   );
 }
 
 export function VirtualWorldIcon(props: IconProps) {
   return (
-    <svg viewBox="0 0 24 24" width={28} height={28} aria-hidden="true" {...props}>
-      <circle cx="12" cy="12" r="7" {...base} />
-      <ellipse cx="12" cy="12" rx="11" ry="4" transform="rotate(-25 12 12)" {...base} />
+    <svg viewBox="0 0 100 100" width={28} height={28} aria-hidden="true" {...props}>
+      <circle cx="50" cy="50" r="34.375" {...categoryIconBase} />
+      <path
+        d="M71.9529 23.5547C82.7732 20.586 90.8982 20.8594 93.3201 25C97.617 32.461 81.7186 49.7266 57.8123 63.5157C33.9061 77.3047 11.0154 82.461 6.6795 75C4.29669 70.8594 8.12481 63.6719 16.0936 55.7813"
+        {...categoryIconBase}
+      />
     </svg>
   );
 }
