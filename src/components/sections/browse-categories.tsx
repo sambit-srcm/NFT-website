@@ -51,8 +51,8 @@ export function BrowseCategories() {
                       rounded="rounded-none"
                       className="aspect-square w-full opacity-70"
                     />
-                    <span className="absolute inset-0 grid place-items-center">
-                      <Icon className="size-10 text-white drop-shadow sm:size-14" />
+                    <span className="absolute inset-0 grid place-items-center backdrop-blur-[15px]">
+                      <Icon className="size-14 text-white drop-shadow sm:size-20" />
                     </span>
                   </div>
                   <h3 className="font-display px-4 py-4 text-lg font-semibold sm:px-5 sm:text-xl">
