@@ -1,3 +1,4 @@
+import { EyeIcon } from "@/components/icons";
 import { Button } from "@/components/ui/button";
 import { Container, SectionHeading } from "@/components/ui/container";
 import { NftCard } from "@/components/ui/nft-card";
@@ -15,7 +16,7 @@ export function DiscoverNfts() {
             description="Explore new trending NFTs"
             action={
               <span className="hidden sm:block">
-                <Button href="/marketplace" variant="outline">
+                <Button href="/marketplace" variant="outline" icon={<EyeIcon />}>
                   See All
                 </Button>
               </span>
@@ -37,7 +38,7 @@ export function DiscoverNfts() {
         </ul>
 
         <Reveal className="mt-8 sm:hidden">
-          <Button href="/marketplace" variant="outline" fullWidth>
+          <Button href="/marketplace" variant="outline" icon={<EyeIcon />} fullWidth>
             See All
           </Button>
         </Reveal>
