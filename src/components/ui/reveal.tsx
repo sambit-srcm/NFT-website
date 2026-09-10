@@ -15,12 +15,7 @@ type RevealProps = {
   as?: "div" | "section" | "li" | "article" | "header" | "footer";
 };
 
-/**
- * Animates its children in when scrolled into view.
- *
- * When the visitor prefers reduced motion the content renders in its final
- * state immediately rather than animating, so nothing is hidden from them.
- */
+/** Reduced motion renders the final state immediately instead of animating. */
 export function Reveal({
   children,
   className,

@@ -3,6 +3,7 @@ import { Container, SectionHeading } from "@/components/ui/container";
 import { Reveal } from "@/components/ui/reveal";
 import { COLLECTIONS } from "@/lib/data";
 
+/** Homepage section showcasing the site's trending NFT collections. */
 export function TrendingCollection() {
   return (
     <section id="marketplace" className="py-section scroll-mt-24 lg:scroll-mt-28">

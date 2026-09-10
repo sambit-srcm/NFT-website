@@ -18,7 +18,6 @@ export function SiteHeader() {
   const [open, setOpen] = useState(false);
   const reduceMotion = useReducedMotion();
 
-  // The drawer is an overlay, so the page behind it must not scroll with it.
   useEffect(() => {
     if (!open) return;
 
@@ -29,7 +28,6 @@ export function SiteHeader() {
     };
   }, [open]);
 
-  // Escape is the expected way out of an overlay menu.
   useEffect(() => {
     if (!open) return;
 
