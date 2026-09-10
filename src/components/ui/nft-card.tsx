@@ -3,12 +3,7 @@ import Link from "next/link";
 import { Art, Avatar } from "@/components/ui/art";
 import type { Nft } from "@/lib/data";
 
-/**
- * Single NFT tile.
- *
- * Extracted so the discover section and the artist portfolio render the same
- * card rather than each maintaining its own copy of the markup.
- */
+/** NFT tile shared by the discover section and the artist portfolio. */
 export function NftCard({ nft }: { nft: Nft }) {
   return (
     <Link

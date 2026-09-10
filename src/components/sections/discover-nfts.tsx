@@ -4,6 +4,7 @@ import { NftCard } from "@/components/ui/nft-card";
 import { Reveal } from "@/components/ui/reveal";
 import { NFTS } from "@/lib/data";
 
+/** Homepage section showing a grid of NFTs to discover, with a link to the marketplace. */
 export function DiscoverNfts() {
   return (
     <section className="py-section">

@@ -9,6 +9,7 @@ const ICONS = {
   earning: CoinsIcon,
 } as const;
 
+/** Homepage section walking through the 3 steps to start selling on the marketplace. */
 export function HowItWorks() {
   return (
     <section className="py-section">

@@ -3,6 +3,7 @@ import { Container } from "@/components/ui/container";
 import { Reveal } from "@/components/ui/reveal";
 import { SubscribeForm } from "@/components/layout/subscribe-form";
 
+/** Homepage's newsletter signup section. */
 export function WeeklyDigest() {
   return (
     <section id="signup" className="py-section scroll-mt-24 lg:scroll-mt-28">

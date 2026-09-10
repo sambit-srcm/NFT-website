@@ -34,10 +34,7 @@ type CommonProps = {
 type ButtonAsLink = CommonProps & { href: string };
 type ButtonAsButton = CommonProps & ComponentPropsWithoutRef<"button"> & { href?: undefined };
 
-/**
- * Renders an anchor when given `href`, otherwise a button, so calls to action
- * stay semantically correct without a second component.
- */
+/** Renders an anchor when given `href`, a button otherwise — one component, correct semantics either way. */
 export function Button(props: ButtonAsLink | ButtonAsButton) {
   const { variant = "primary", size = "md", icon, fullWidth, children, className } = props;
 

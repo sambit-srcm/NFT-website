@@ -5,12 +5,7 @@ import type { ChangeEvent } from "react";
 import { SearchIcon } from "@/components/icons";
 import { cn } from "@/lib/cn";
 
-/**
- * Search input with a visible label.
- *
- * The label is visually hidden rather than omitted, so the field still has an
- * accessible name once the placeholder disappears.
- */
+/** Label is visually hidden rather than omitted, so it keeps an accessible name once the placeholder disappears. */
 export function SearchField({
   id,
   label,

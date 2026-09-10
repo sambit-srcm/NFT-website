@@ -6,6 +6,7 @@ import { Container, SectionHeading } from "@/components/ui/container";
 import { Reveal } from "@/components/ui/reveal";
 import { CREATORS } from "@/lib/data";
 
+/** Homepage section showing a short leaderboard, linking to the full rankings page. */
 export function TopCreators() {
   return (
     <section id="rankings" className="py-section scroll-mt-24 lg:scroll-mt-28">

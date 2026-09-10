@@ -60,8 +60,6 @@ export function CreateAccountForm() {
   function update(key: keyof Values, value: string) {
     setValues((current) => ({ ...current, [key]: value }));
 
-    // Clear a field's error as soon as it is edited, rather than leaving stale
-    // text under a field the visitor is actively fixing.
     setErrors((current) => (current[key] ? { ...current, [key]: undefined } : current));
   }
 
@@ -78,7 +76,6 @@ export function CreateAccountForm() {
       return;
     }
 
-    // No backend exists yet, so success is reported without sending a request.
     setSubmitted(true);
     setValues(EMPTY);
   }
