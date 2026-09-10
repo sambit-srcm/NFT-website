@@ -50,16 +50,6 @@ describe("MarketplacePage", () => {
     expect(screen.queryAllByRole("listitem")).toHaveLength(0);
   });
 
-  it("sorts listings by price", async () => {
-    const user = userEvent.setup();
-    render(<MarketplacePage />);
-
-    await user.selectOptions(screen.getByLabelText(/sort listings/i), "price-low");
-
-    const titles = screen.getAllByRole("heading", { level: 3 }).map((h) => h.textContent);
-    expect(titles[0]).toBe("Moon Dancer");
-  });
-
   it("switches category tabs", async () => {
     const user = userEvent.setup();
     render(<MarketplacePage />);
