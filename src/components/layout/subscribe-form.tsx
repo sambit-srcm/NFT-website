@@ -23,7 +23,7 @@ export function SubscribeForm({ className }: { className?: string }) {
 
   return (
     <form onSubmit={handleSubmit} className={cn("w-full", className)}>
-      <div className="bg-ink flex flex-col gap-2 rounded-[20px] p-2 sm:flex-row">
+      <div className="sm:bg-ink flex flex-col gap-3 sm:flex-row sm:gap-0 sm:overflow-hidden sm:rounded-[20px]">
         <label htmlFor="subscribe-email" className="sr-only">
           Email address
         </label>
@@ -34,9 +34,9 @@ export function SubscribeForm({ className }: { className?: string }) {
           value={email}
           onChange={(event) => setEmail(event.target.value)}
           placeholder="Enter your email here"
-          className="text-canvas w-full rounded-[20px] bg-transparent px-5 py-3 outline-none placeholder:text-neutral-500"
+          className="text-canvas bg-ink w-full rounded-[20px] px-5 py-3 outline-none placeholder:text-neutral-500 sm:rounded-none sm:bg-transparent"
         />
-        <Button type="submit" className="shrink-0">
+        <Button type="submit" className="shrink-0 sm:rounded-none">
           Subscribe
         </Button>
       </div>
