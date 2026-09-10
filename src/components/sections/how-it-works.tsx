@@ -1,11 +1,11 @@
 import { Container, SectionHeading } from "@/components/ui/container";
 import { Reveal } from "@/components/ui/reveal";
-import { CoinsIcon, CollectibleIcon, WalletIcon } from "@/components/icons";
+import { CoinsIcon, CollectionIcon, WalletIcon } from "@/components/icons";
 import { STEPS } from "@/lib/data";
 
 const ICONS = {
   wallet: WalletIcon,
-  collection: CollectibleIcon,
+  collection: CollectionIcon,
   earning: CoinsIcon,
 } as const;
 
@@ -24,14 +24,14 @@ export function HowItWorks() {
 
             return (
               <Reveal as="li" key={step.id} delay={index * 0.1}>
-                <article className="bg-surface h-full rounded-[20px] p-6 text-center sm:p-8">
-                  <span className="bg-canvas text-brand mx-auto grid size-16 place-items-center rounded-2xl sm:size-20">
-                    <Icon className="size-8 sm:size-10" />
-                  </span>
-                  <h3 className="font-display mt-6 text-xl font-semibold sm:text-[22px]">
-                    {step.title}
-                  </h3>
-                  <p className="text-ink-subtle mt-3">{step.body}</p>
+                <article className="bg-surface flex h-full items-center justify-between gap-4 rounded-[20px] p-6 text-right sm:block sm:p-8 sm:text-center">
+                  <Icon className="size-[100px] shrink-0 sm:mx-auto sm:size-[160px] lg:size-[250px]" />
+                  <div className="sm:mt-6">
+                    <h3 className="font-display text-xl font-semibold sm:text-[22px]">
+                      {step.title}
+                    </h3>
+                    <p className="text-ink-subtle mt-3">{step.body}</p>
+                  </div>
                 </article>
               </Reveal>
             );
