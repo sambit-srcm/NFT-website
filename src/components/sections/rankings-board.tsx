@@ -8,6 +8,7 @@ import { cn } from "@/lib/cn";
 import { RANKING_PERIODS, RANKINGS } from "@/lib/data";
 import type { RankedCreator, RankingPeriodId } from "@/lib/data";
 
+/** Colors the change percentage green for a gain, red for a loss. */
 function ChangeValue({ change }: { change: number }) {
   const positive = change >= 0;
 
@@ -19,6 +20,7 @@ function ChangeValue({ change }: { change: number }) {
   );
 }
 
+/** The rankings page: top creators leaderboard with period tabs. */
 export function RankingsBoard() {
   const [period, setPeriod] = useState<RankingPeriodId>("today");
   const rows: RankedCreator[] = RANKINGS[period];

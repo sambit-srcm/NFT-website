@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 
 import { CopyIcon } from "@/components/icons";
 
-/** Shortens a wallet address for display. */
 function shorten(address: string) {
   return `${address.slice(0, 6)}...${address.slice(-4)}`;
 }
@@ -12,7 +11,6 @@ function shorten(address: string) {
 export function CopyAddress({ address }: { address: string }) {
   const [copied, setCopied] = useState(false);
 
-  // Reset the confirmation so the button does not read "Copied" indefinitely.
   useEffect(() => {
     if (!copied) return;
 
@@ -25,7 +23,6 @@ export function CopyAddress({ address }: { address: string }) {
       await navigator.clipboard.writeText(address);
       setCopied(true);
     } catch {
-      // Clipboard access can fail; don't claim a copy that didn't happen.
       setCopied(false);
     }
   }

@@ -18,7 +18,6 @@ export function AuthShell({
   return (
     <main className="flex-1">
       <div className="grid lg:grid-cols-2">
-        {/* Height capped on small screens so the form isn't pushed past a full-height image. */}
         <Art
           seed={artSeed}
           rounded="rounded-none"

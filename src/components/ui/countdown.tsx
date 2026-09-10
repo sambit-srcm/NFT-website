@@ -10,7 +10,7 @@ function pad(value: number) {
   return value.toString().padStart(2, "0");
 }
 
-/** Auction countdown. Starts from a fixed figure and only ticks after mount, to avoid a hydration mismatch. */
+/** Starts from a fixed number and only counts down once the page has loaded. */
 export function Countdown() {
   const [remaining, setRemaining] = useState<Remaining>(INITIAL);
 

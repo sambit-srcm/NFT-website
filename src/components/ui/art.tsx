@@ -5,8 +5,6 @@ import { artSrc, avatarSrc } from "@/lib/images";
 
 const PLACEHOLDER = "/images/placeholder.svg";
 
-/** Artwork tile. Renders the matching image for a seed, or a placeholder if there isn't one. */
-
 function Tile({
   seed,
   src,
