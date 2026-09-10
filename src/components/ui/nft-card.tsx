@@ -1,6 +1,8 @@
 import Link from "next/link";
 
 import { Art, Avatar } from "@/components/ui/art";
+import { squeezeEffect } from "@/components/ui/button";
+import { cn } from "@/lib/cn";
 import type { Nft } from "@/lib/data";
 
 /** NFT tile shared by the discover section and the artist portfolio. */
@@ -8,7 +10,10 @@ export function NftCard({ nft }: { nft: Nft }) {
   return (
     <Link
       href="/nft"
-      className="bg-surface hover:bg-surface-raised block h-full overflow-hidden rounded-[20px] transition-colors"
+      className={cn(
+        "bg-surface hover:bg-surface-raised block h-full overflow-hidden rounded-[20px] transition duration-200",
+        squeezeEffect,
+      )}
     >
       <Art seed={nft.id} rounded="rounded-none" className="aspect-square w-full" />
       <div className="p-5">

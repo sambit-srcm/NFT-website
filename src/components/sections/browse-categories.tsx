@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import { Art } from "@/components/ui/art";
+import { squeezeEffect } from "@/components/ui/button";
 import { Container, SectionHeading } from "@/components/ui/container";
 import { Reveal } from "@/components/ui/reveal";
 import {
@@ -13,6 +14,7 @@ import {
   VideoIcon,
   VirtualWorldIcon,
 } from "@/components/icons";
+import { cn } from "@/lib/cn";
 import { CATEGORIES } from "@/lib/data";
 
 const ICONS: Record<string, (props: { className?: string }) => React.ReactElement> = {
@@ -43,7 +45,10 @@ export function BrowseCategories() {
               <Reveal as="li" key={category.id} delay={Math.min(index, 7) * 0.05}>
                 <Link
                   href={`#${category.id}`}
-                  className="bg-surface hover:bg-surface-raised group block overflow-hidden rounded-[20px] transition-colors"
+                  className={cn(
+                    "bg-surface hover:bg-surface-raised block overflow-hidden rounded-[20px] transition duration-200",
+                    squeezeEffect,
+                  )}
                 >
                   <div className="relative">
                     <Art
