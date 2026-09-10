@@ -1,9 +1,12 @@
+import Link from "next/link";
+
 import { Art, Avatar } from "@/components/ui/art";
-import { Button } from "@/components/ui/button";
+import { Button, squeezeEffect } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { CountUp } from "@/components/ui/count-up";
 import { Reveal } from "@/components/ui/reveal";
 import { RocketIcon } from "@/components/icons";
+import { cn } from "@/lib/cn";
 import { STATS } from "@/lib/data";
 
 /** The homepage's top banner: headline, stat counters, and a featured NFT card. */
@@ -51,7 +54,14 @@ export function Hero() {
         </div>
 
         <Reveal delay={0.12} className="w-full">
-          <div className="bg-surface overflow-hidden rounded-[20px]">
+          <Link
+            href="/artist"
+            aria-label="Space Walking by Animakid"
+            className={cn(
+              "bg-surface hover:bg-surface-raised block overflow-hidden rounded-[20px] transition duration-200",
+              squeezeEffect,
+            )}
+          >
             <Art seed="space-walking" rounded="rounded-none" className="aspect-[4/3] w-full" />
             <div className="p-5">
               <p className="font-display text-[22px] font-semibold">Space Walking</p>
@@ -60,7 +70,7 @@ export function Hero() {
                 <span className="text-ink-subtle">Animakid</span>
               </div>
             </div>
-          </div>
+          </Link>
         </Reveal>
       </Container>
     </section>

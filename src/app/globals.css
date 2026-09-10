@@ -13,12 +13,16 @@
 
   /* Brand */
   --color-brand: #a259ff;
-  --color-brand-strong: #8b3dff;
+  /* Figma has no hover state for the brand color, so this is --color-brand darkened ~12%. */
+  --color-brand-strong: #8f4ee0;
 
   /* Text */
   --color-ink: #ffffff;
   --color-ink-muted: #858584;
   --color-ink-subtle: #cccccc;
+
+  /* Status */
+  --color-positive: #00ac4f;
 
   /* Typography */
   --font-display: var(--font-work-sans), ui-sans-serif, system-ui, sans-serif;

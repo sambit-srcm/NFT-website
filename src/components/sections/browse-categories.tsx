@@ -1,30 +1,12 @@
 import Link from "next/link";
 
 import { Art } from "@/components/ui/art";
+import { squeezeEffect } from "@/components/ui/button";
 import { Container, SectionHeading } from "@/components/ui/container";
 import { Reveal } from "@/components/ui/reveal";
-import {
-  CameraIcon,
-  CollectibleIcon,
-  MusicIcon,
-  PaletteIcon,
-  SportIcon,
-  UtilityIcon,
-  VideoIcon,
-  VirtualWorldIcon,
-} from "@/components/icons";
+import { CATEGORY_ICONS } from "@/constants/icons";
+import { cn } from "@/lib/cn";
 import { CATEGORIES } from "@/lib/data";
-
-const ICONS: Record<string, (props: { className?: string }) => React.ReactElement> = {
-  art: PaletteIcon,
-  collectibles: CollectibleIcon,
-  music: MusicIcon,
-  photography: CameraIcon,
-  video: VideoIcon,
-  utility: UtilityIcon,
-  sport: SportIcon,
-  "virtual-worlds": VirtualWorldIcon,
-};
 
 /** Homepage section listing the NFT genre tiles to browse by. */
 export function BrowseCategories() {
@@ -37,13 +19,16 @@ export function BrowseCategories() {
 
         <ul className="mt-10 grid grid-cols-2 gap-5 md:grid-cols-3 lg:grid-cols-4">
           {CATEGORIES.map((category, index) => {
-            const Icon = ICONS[category.id];
+            const Icon = CATEGORY_ICONS[category.id];
 
             return (
               <Reveal as="li" key={category.id} delay={Math.min(index, 7) * 0.05}>
                 <Link
                   href={`#${category.id}`}
-                  className="bg-surface hover:bg-surface-raised group block overflow-hidden rounded-[20px] transition-colors"
+                  className={cn(
+                    "bg-surface hover:bg-surface-raised block overflow-hidden rounded-[20px] transition duration-200",
+                    squeezeEffect,
+                  )}
                 >
                   <div className="relative">
                     <Art
@@ -51,8 +36,8 @@ export function BrowseCategories() {
                       rounded="rounded-none"
                       className="aspect-square w-full opacity-70"
                     />
-                    <span className="absolute inset-0 grid place-items-center">
-                      <Icon className="size-10 text-white drop-shadow sm:size-14" />
+                    <span className="absolute inset-0 grid place-items-center backdrop-blur-[15px]">
+                      <Icon className="size-14 text-white drop-shadow sm:size-20" />
                     </span>
                   </div>
                   <h3 className="font-display px-4 py-4 text-lg font-semibold sm:px-5 sm:text-xl">

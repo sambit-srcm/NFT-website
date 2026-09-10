@@ -13,7 +13,7 @@ function ChangeValue({ change }: { change: number }) {
   const positive = change >= 0;
 
   return (
-    <span className={cn("font-mono", positive ? "text-emerald-400" : "text-red-400")}>
+    <span className={cn("font-mono", positive ? "text-positive" : "text-red-400")}>
       {positive ? "+" : ""}
       {change.toFixed(2)}%
     </span>

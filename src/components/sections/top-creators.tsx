@@ -1,9 +1,11 @@
 import Link from "next/link";
 
 import { Avatar } from "@/components/ui/art";
-import { Button } from "@/components/ui/button";
+import { Button, squeezeEffect } from "@/components/ui/button";
 import { Container, SectionHeading } from "@/components/ui/container";
 import { Reveal } from "@/components/ui/reveal";
+import { RocketIcon } from "@/components/icons";
+import { cn } from "@/lib/cn";
 import { CREATORS } from "@/lib/data";
 
 /** Homepage section showing a short leaderboard, linking to the full rankings page. */
@@ -16,7 +18,12 @@ export function TopCreators() {
             title="Top creators"
             description="Checkout Top Rated Creators on the NFT Marketplace"
             action={
-              <Button href="/rankings" variant="outline" className="hidden sm:inline-flex">
+              <Button
+                href="/rankings"
+                variant="outline"
+                icon={<RocketIcon />}
+                className="hidden sm:inline-flex"
+              >
                 View Rankings
               </Button>
             }
@@ -28,7 +35,10 @@ export function TopCreators() {
             <Reveal as="li" key={creator.name} delay={Math.min(index, 7) * 0.05}>
               <Link
                 href="/artist"
-                className="bg-surface hover:bg-surface-raised relative flex flex-col items-center rounded-[20px] p-4 transition-colors sm:p-5"
+                className={cn(
+                  "bg-surface hover:bg-surface-raised relative flex flex-col items-center rounded-[20px] p-4 transition duration-200 sm:p-5",
+                  squeezeEffect,
+                )}
               >
                 <span
                   className="bg-canvas text-ink-muted absolute top-4 left-4 grid size-8 place-items-center rounded-full font-mono text-sm"
@@ -50,7 +60,7 @@ export function TopCreators() {
         </ol>
 
         <Reveal className="mt-8 sm:hidden">
-          <Button href="/rankings" variant="outline" fullWidth>
+          <Button href="/rankings" variant="outline" icon={<RocketIcon />} fullWidth>
             View Rankings
           </Button>
         </Reveal>

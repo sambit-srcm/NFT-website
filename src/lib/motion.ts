@@ -13,11 +13,6 @@ export const fadeUp: Variants = {
   },
 };
 
-export const fadeIn: Variants = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { duration: 0.5, ease: EASE_OUT } },
-};
-
 /** Parent variant for lists — children animate in sequence, not all at once. */
 export const stagger = (staggerChildren = 0.08, delayChildren = 0): Variants => ({
   hidden: {},
