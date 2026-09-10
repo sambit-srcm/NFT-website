@@ -166,11 +166,3 @@ than disabling the scan.
 `gitleaks-action` is free for personal and public repositories. Organisation-owned repos need a
 `GITLEAKS_LICENSE` secret — uncomment that line in
 [`.github/workflows/gitleaks.yml`](.github/workflows/gitleaks.yml).
-
-## Deploy
-
-The fastest path is [Vercel](https://vercel.com/new). Add every variable from `.env.example` to the
-project's environment settings before the first deploy.
-
-See the [Next.js deployment docs](https://nextjs.org/docs/app/building-your-application/deploying)
-for other targets.
