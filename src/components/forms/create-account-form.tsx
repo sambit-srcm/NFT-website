@@ -6,6 +6,7 @@ import type { FormEvent } from "react";
 import { Button } from "@/components/ui/button";
 import { Field } from "@/components/ui/field";
 import { EnvelopeIcon, LockIcon, UserIcon } from "@/components/icons";
+import { MIN_PASSWORD_LENGTH } from "@/constants/validation";
 
 type Values = {
   username: string;
@@ -20,8 +21,6 @@ const EMPTY: Values = { username: "", email: "", password: "", confirmPassword: 
 
 /** Field order drives which error is focused first. */
 const ORDER: Array<keyof Values> = ["username", "email", "password", "confirmPassword"];
-
-const MIN_PASSWORD_LENGTH = 8;
 
 function validate(values: Values): Errors {
   const errors: Errors = {};

@@ -8,7 +8,14 @@ type Size = "md" | "lg";
 
 const base =
   "inline-flex items-center justify-center gap-3 rounded-[20px] font-semibold " +
-  "transition-colors duration-200 focus-visible:outline-2 disabled:opacity-60";
+  "transition duration-200 focus-visible:outline-2 disabled:opacity-60";
+
+/**
+ * Hover squeeze. Shared by every clickable surface on the site, so cards, nav
+ * links and buttons all respond the same way. Opted out of by buttons sitting
+ * flush inside another shape, where shrinking would open a gap.
+ */
+export const squeezeEffect = "motion-safe:hover:scale-95 motion-safe:active:scale-[0.92]";
 
 const variants: Record<Variant, string> = {
   primary: "bg-brand text-ink hover:bg-brand-strong",
@@ -27,6 +34,8 @@ type CommonProps = {
   size?: Size;
   icon?: ReactNode;
   fullWidth?: boolean;
+  /** Set false where shrinking would open a gap against a neighbouring element. */
+  squeeze?: boolean;
   children: ReactNode;
   className?: string;
 };
@@ -36,9 +45,24 @@ type ButtonAsButton = CommonProps & ComponentPropsWithoutRef<"button"> & { href?
 
 /** Renders an anchor when given `href`, a button otherwise — one component, correct semantics either way. */
 export function Button(props: ButtonAsLink | ButtonAsButton) {
-  const { variant = "primary", size = "md", icon, fullWidth, children, className } = props;
+  const {
+    variant = "primary",
+    size = "md",
+    icon,
+    fullWidth,
+    squeeze = true,
+    children,
+    className,
+  } = props;
 
-  const classes = cn(base, variants[variant], sizes[size], fullWidth && "w-full", className);
+  const classes = cn(
+    base,
+    variants[variant],
+    sizes[size],
+    fullWidth && "w-full",
+    squeeze && squeezeEffect,
+    className,
+  );
 
   const content = (
     <>
@@ -55,7 +79,15 @@ export function Button(props: ButtonAsLink | ButtonAsButton) {
     );
   }
 
-  const { variant: _v, size: _s, icon: _i, fullWidth: _f, className: _c, ...rest } = props;
+  const {
+    variant: _v,
+    size: _s,
+    icon: _i,
+    fullWidth: _f,
+    squeeze: _sq,
+    className: _c,
+    ...rest
+  } = props;
 
   return (
     <button className={classes} {...rest}>

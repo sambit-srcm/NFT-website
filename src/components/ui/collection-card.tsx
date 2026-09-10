@@ -1,10 +1,18 @@
+import Link from "next/link";
+
 import { Art, Avatar } from "@/components/ui/art";
+import { squeezeEffect } from "@/components/ui/button";
+import { cn } from "@/lib/cn";
 import type { Collection } from "@/lib/data";
 
 /** Shared by Trending Collection and the artist page's Collection tab. */
 export function CollectionCard({ collection }: { collection: Collection }) {
   return (
-    <>
+    <Link
+      href="/marketplace"
+      aria-label={`${collection.name} by ${collection.creator}`}
+      className={cn("block transition duration-200", squeezeEffect)}
+    >
       <Art seed={collection.id} className="aspect-[330/330] w-full" />
 
       <div className="mt-4 grid grid-cols-3 gap-3">
@@ -20,6 +28,6 @@ export function CollectionCard({ collection }: { collection: Collection }) {
         <Avatar seed={collection.creator} className="size-6" />
         <span className="text-ink-subtle">{collection.creator}</span>
       </div>
-    </>
+    </Link>
   );
 }

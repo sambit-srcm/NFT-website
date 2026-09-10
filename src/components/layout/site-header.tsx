@@ -4,15 +4,11 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 
-import { Button } from "@/components/ui/button";
+import { Button, squeezeEffect } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
+import { cn } from "@/lib/cn";
 import { CloseIcon, LogoMark, MenuIcon, UserIcon } from "@/components/icons";
-
-const NAV_LINKS = [
-  { label: "Marketplace", href: "/marketplace" },
-  { label: "Rankings", href: "/rankings" },
-  { label: "Connect a wallet", href: "/connect-wallet" },
-];
+import { NAV_LINKS } from "@/constants/nav";
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
@@ -54,7 +50,10 @@ export function SiteHeader() {
             <Link
               key={link.href}
               href={link.href}
-              className="hover:text-brand text-base font-semibold transition-colors"
+              className={cn(
+                "hover:text-brand text-base font-semibold transition duration-200",
+                squeezeEffect,
+              )}
             >
               {link.label}
             </Link>
@@ -70,7 +69,7 @@ export function SiteHeader() {
           aria-expanded={open}
           aria-controls="mobile-menu"
           aria-label={open ? "Close menu" : "Open menu"}
-          className="hover:text-brand p-2 transition-colors lg:hidden"
+          className={cn("hover:text-brand p-2 transition duration-200 lg:hidden", squeezeEffect)}
         >
           {open ? <CloseIcon /> : <MenuIcon />}
         </button>
@@ -93,7 +92,10 @@ export function SiteHeader() {
                   key={link.href}
                   href={link.href}
                   onClick={() => setOpen(false)}
-                  className="hover:bg-surface-raised rounded-xl px-3 py-3 text-lg font-semibold transition-colors"
+                  className={cn(
+                    "hover:bg-surface-raised rounded-xl px-3 py-3 text-lg font-semibold transition duration-200",
+                    squeezeEffect,
+                  )}
                 >
                   {link.label}
                 </Link>
