@@ -5,12 +5,7 @@ import { artSrc, avatarSrc } from "@/lib/images";
 
 const PLACEHOLDER = "/images/placeholder.svg";
 
-/**
- * Artwork tile.
- *
- * Seeds that the Figma export covers render the real image; anything else
- * falls back to the placeholder image.
- */
+/** Artwork tile. Renders the matching image for a seed, or a placeholder if there isn't one. */
 
 function Tile({
   seed,

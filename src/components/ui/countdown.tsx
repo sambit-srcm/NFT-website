@@ -10,13 +10,7 @@ function pad(value: number) {
   return value.toString().padStart(2, "0");
 }
 
-/**
- * Auction countdown.
- *
- * Server and first client render both show the same fixed starting figure, and
- * ticking only begins after mount. Deriving the deadline from Date.now() during
- * render would produce a hydration mismatch instead.
- */
+/** Auction countdown. Starts from a fixed figure and only ticks after mount, to avoid a hydration mismatch. */
 export function Countdown() {
   const [remaining, setRemaining] = useState<Remaining>(INITIAL);
 

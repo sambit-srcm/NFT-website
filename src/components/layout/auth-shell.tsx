@@ -3,12 +3,7 @@ import type { ReactNode } from "react";
 import { Art } from "@/components/ui/art";
 import { Reveal } from "@/components/ui/reveal";
 
-/**
- * Shared shell for the account pages.
- *
- * Create account and connect wallet differ only in the panel content, so the
- * split layout lives here and the pages stay focused on what they ask for.
- */
+/** Shared shell for the account pages — create account and connect wallet only differ in panel content. */
 export function AuthShell({
   title,
   description,
@@ -23,10 +18,7 @@ export function AuthShell({
   return (
     <main className="flex-1">
       <div className="grid lg:grid-cols-2">
-        {/*
-         * Capped on small screens so the form is reachable without scrolling
-         * past a full-height image, then stretched beside it on large ones.
-         */}
+        {/* Height capped on small screens so the form isn't pushed past a full-height image. */}
         <Art
           seed={artSeed}
           rounded="rounded-none"

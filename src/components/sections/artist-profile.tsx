@@ -34,7 +34,7 @@ export function ArtistProfile() {
       />
 
       <Container>
-        {/* The avatar straddles the cover edge, as in the design. */}
+        {/* The avatar overlaps the cover image's bottom edge. */}
         <div className="-mt-12 sm:-mt-16 xl:-mt-20">
           <Avatar
             seed={ARTIST.handle}

@@ -76,10 +76,7 @@ export function NftDetail() {
             </Reveal>
           </div>
 
-          {/*
-           * The auction panel leads on mobile, where it would otherwise sit
-           * below a long description and be missed.
-           */}
+          {/* Leads on mobile so it's not buried below a long description. */}
           <Reveal delay={0.08} className="order-first lg:order-none">
             <section aria-labelledby="auction-heading" className="bg-surface rounded-[20px] p-6">
               <h2 id="auction-heading" className="text-ink-subtle font-mono text-sm">

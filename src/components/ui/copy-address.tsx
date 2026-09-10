@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 
 import { CopyIcon } from "@/components/icons";
 
-/** Shortens a wallet address the way the design shows it. */
+/** Shortens a wallet address for display. */
 function shorten(address: string) {
   return `${address.slice(0, 6)}...${address.slice(-4)}`;
 }
@@ -25,8 +25,7 @@ export function CopyAddress({ address }: { address: string }) {
       await navigator.clipboard.writeText(address);
       setCopied(true);
     } catch {
-      // Clipboard access can be denied or unavailable; leave the label alone
-      // rather than claiming a copy that did not happen.
+      // Clipboard access can fail; don't claim a copy that didn't happen.
       setCopied(false);
     }
   }
