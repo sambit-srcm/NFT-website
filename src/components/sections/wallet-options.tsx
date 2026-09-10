@@ -3,7 +3,9 @@
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 
+import { squeezeEffect } from "@/components/ui/button";
 import { CoinbaseIcon, MetamaskIcon, WalletConnectIcon } from "@/components/icons";
+import { cn } from "@/lib/cn";
 import { WALLETS } from "@/lib/data";
 import { stagger, fadeUp } from "@/lib/motion";
 
@@ -31,7 +33,10 @@ export function WalletOptions() {
           <motion.li key={wallet.id} variants={reduceMotion ? undefined : fadeUp}>
             <Link
               href={`#${wallet.id}`}
-              className="bg-surface hover:bg-surface-raised hover:border-brand flex items-center gap-4 rounded-[20px] border-2 border-transparent px-6 py-5 transition-colors motion-safe:hover:-translate-y-0.5"
+              className={cn(
+                "bg-surface hover:bg-surface-raised hover:border-brand flex items-center gap-4 rounded-[20px] border-2 border-transparent px-6 py-5 transition duration-200",
+                squeezeEffect,
+              )}
             >
               <span aria-hidden="true" className="text-brand shrink-0">
                 <Icon />
