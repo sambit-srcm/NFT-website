@@ -67,7 +67,7 @@ export function SiteFooter() {
             <p className="text-ink-subtle mt-6">
               Get exclusive promotions &amp; updates straight to your inbox.
             </p>
-            <SubscribeForm className="mt-4" />
+            <SubscribeForm className="mt-4" merged />
           </div>
         </div>
 
