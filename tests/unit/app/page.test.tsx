@@ -41,4 +41,20 @@ describe("Home", () => {
     expect(screen.getByLabelText("Rank 1")).toBeInTheDocument();
     expect(screen.getByLabelText("Rank 12")).toBeInTheDocument();
   });
+
+  it("shows the hero card linking to the artist", () => {
+    render(<Home />);
+
+    expect(screen.getByRole("link", { name: "Space Walking by Animakid" })).toHaveAttribute(
+      "href",
+      "/artist",
+    );
+  });
+
+  it("shows the creator's total sales on the hero card", () => {
+    render(<Home />);
+
+    const card = screen.getByRole("link", { name: "Space Walking by Animakid" });
+    expect(card).toHaveTextContent("Total Sales: 34.53 ETH");
+  });
 });
