@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
 
 import { CollectionCard } from "@/components/ui/collection-card";
 import { Container } from "@/components/ui/container";
@@ -13,7 +13,6 @@ import type { ArtistTabId } from "@/lib/data";
 /** Artist page's Created/Owned/Collection tabs and the grid underneath them. */
 export function ArtistPortfolio() {
   const [active, setActive] = useState<ArtistTabId>("created");
-  const reduceMotion = useReducedMotion();
 
   return (
     <section className="py-section">
@@ -41,7 +40,7 @@ export function ArtistPortfolio() {
         >
           <motion.ul
             key={active}
-            initial={reduceMotion ? false : { opacity: 0, y: 12 }}
+            initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
             className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3"

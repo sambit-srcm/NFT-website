@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
 
 import { squeezeEffect } from "@/components/ui/button";
 import { CoinbaseIcon, MetamaskIcon, WalletConnectIcon } from "@/components/icons";
@@ -17,20 +17,13 @@ const ICONS: Record<string, (props: { className?: string }) => React.ReactElemen
 
 /** The Connect Wallet page's list of wallet providers to choose from. */
 export function WalletOptions() {
-  const reduceMotion = useReducedMotion();
-
   return (
-    <motion.ul
-      className="space-y-5"
-      variants={stagger(0.1)}
-      initial={reduceMotion ? false : "hidden"}
-      animate="visible"
-    >
+    <motion.ul className="space-y-5" variants={stagger(0.1)} initial="hidden" animate="visible">
       {WALLETS.map((wallet) => {
         const Icon = ICONS[wallet.id];
 
         return (
-          <motion.li key={wallet.id} variants={reduceMotion ? undefined : fadeUp}>
+          <motion.li key={wallet.id} variants={fadeUp}>
             <Link
               href={`#${wallet.id}`}
               className={cn(

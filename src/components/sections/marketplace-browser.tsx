@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
 
 import { Container } from "@/components/ui/container";
 import { NftCard } from "@/components/ui/nft-card";
@@ -14,7 +14,6 @@ import type { MarketplaceTabId } from "@/lib/data";
 export function MarketplaceBrowser() {
   const [query, setQuery] = useState("");
   const [tab, setTab] = useState<MarketplaceTabId>("nfts");
-  const reduceMotion = useReducedMotion();
 
   const listings = useMemo(() => {
     const term = query.trim().toLowerCase();
@@ -76,7 +75,7 @@ export function MarketplaceBrowser() {
           ) : (
             <motion.ul
               key={tab}
-              initial={reduceMotion ? false : { opacity: 0, y: 12 }}
+              initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
               className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3"
