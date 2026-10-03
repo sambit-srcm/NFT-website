@@ -14,7 +14,7 @@ function ChangeValue({ change }: { change: number }) {
   const positive = change >= 0;
 
   return (
-    <span className={cn("font-mono", positive ? "text-positive" : "text-red-400")}>
+    <span className={cn("font-mono", positive ? "text-positive" : "text-red-300")}>
       {positive ? "+" : ""}
       {change.toFixed(2)}%
     </span>
@@ -54,43 +54,63 @@ export function RankingsBoard() {
           )}
         />
 
+        {/* Looks like cards, but reads as a table. Hidden columns drop together. */}
         <div
           role="tabpanel"
           id={panelId("rankings", period)}
           aria-labelledby={tabId("rankings", period)}
         >
-          <div className="text-ink-subtle mt-10 flex items-center justify-between rounded-[20px] border border-white/10 px-4 py-3 font-mono text-sm">
-            <span>Artist</span>
-            <div className="flex items-center gap-8">
-              <span className="hidden w-20 sm:block">Change</span>
-              <span className="hidden w-20 text-right xl:block">NFTs Sold</span>
-              <span className="w-24 text-right">Volume</span>
+          <div role="table" aria-label="Creator rankings">
+            <div role="rowgroup">
+              <div
+                role="row"
+                className="text-ink-subtle mt-10 flex items-center justify-between rounded-[20px] border border-white/10 px-4 py-3 font-mono text-sm"
+              >
+                <span role="columnheader">Artist</span>
+                <div role="none" className="flex items-center gap-8">
+                  <span role="columnheader" className="hidden w-20 sm:block">
+                    Change
+                  </span>
+                  <span role="columnheader" className="hidden w-20 text-right xl:block">
+                    NFTs Sold
+                  </span>
+                  <span role="columnheader" className="w-24 text-right">
+                    Volume
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div role="rowgroup" className="mt-4 space-y-4">
+              {rows.map((row) => (
+                <div
+                  key={row.name}
+                  role="row"
+                  className="bg-surface flex items-center justify-between gap-4 rounded-[20px] p-4"
+                >
+                  <div role="cell" className="flex items-center gap-4">
+                    <span className="text-ink-muted w-6 shrink-0 font-mono">
+                      <span className="sr-only">Rank </span>
+                      {row.rank}
+                    </span>
+                    <Avatar seed={row.name} className="size-10 shrink-0" />
+                    <span className="font-semibold">{row.name}</span>
+                  </div>
+                  <div role="none" className="flex items-center gap-8">
+                    <span role="cell" className="hidden w-20 sm:block">
+                      <ChangeValue change={row.change} />
+                    </span>
+                    <span role="cell" className="hidden w-20 text-right font-mono xl:block">
+                      {row.nftsSold}
+                    </span>
+                    <span role="cell" className="w-24 text-right font-mono text-sm">
+                      {row.volume.toFixed(2)} ETH
+                    </span>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
-
-          <ul className="mt-4 space-y-4">
-            {rows.map((row) => (
-              <li
-                key={row.name}
-                className="bg-surface flex items-center justify-between gap-4 rounded-[20px] p-4"
-              >
-                <div className="flex items-center gap-4">
-                  <span className="text-ink-muted w-6 shrink-0 font-mono">{row.rank}</span>
-                  <Avatar seed={row.name} className="size-10 shrink-0" />
-                  <span className="font-semibold">{row.name}</span>
-                </div>
-                <div className="flex items-center gap-8">
-                  <span className="hidden w-20 sm:block">
-                    <ChangeValue change={row.change} />
-                  </span>
-                  <span className="hidden w-20 text-right font-mono xl:block">{row.nftsSold}</span>
-                  <span className="w-24 text-right font-mono text-sm">
-                    {row.volume.toFixed(2)} ETH
-                  </span>
-                </div>
-              </li>
-            ))}
-          </ul>
         </div>
       </Container>
     </section>
