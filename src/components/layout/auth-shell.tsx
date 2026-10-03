@@ -16,7 +16,7 @@ export function AuthShell({
   children: ReactNode;
 }) {
   return (
-    <main className="flex-1">
+    <main id="main-content" tabIndex={-1} className="flex-1">
       <div className="grid lg:grid-cols-2">
         <Art
           seed={artSeed}

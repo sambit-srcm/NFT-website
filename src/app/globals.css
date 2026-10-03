@@ -52,6 +52,11 @@
     outline-offset: 3px;
   }
 
+  /* Skip-link target. No focus ring. */
+  [tabindex="-1"]:focus {
+    outline: none;
+  }
+
   /*
    * Respect the OS reduced-motion setting. Framer Motion is told separately via
    * useReducedMotion; this covers CSS transitions and smooth scrolling too.
