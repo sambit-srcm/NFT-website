@@ -4,6 +4,7 @@ import { useState } from "react";
 
 import { Avatar } from "@/components/ui/art";
 import { Container } from "@/components/ui/container";
+import { TabList, panelId, tabId } from "@/components/ui/tabs";
 import { cn } from "@/lib/cn";
 import { RANKING_PERIODS, RANKINGS } from "@/lib/data";
 import type { RankedCreator, RankingPeriodId } from "@/lib/data";
@@ -35,69 +36,62 @@ export function RankingsBoard() {
           Check out top ranking NFT artists on the NFT Marketplace.
         </p>
 
+        <TabList
+          label="Ranking period"
+          idPrefix="rankings"
+          tabs={RANKING_PERIODS}
+          active={period}
+          onChange={setPeriod}
+          className="mt-8"
+          tabClassName="px-5 text-center"
+          renderTab={(option) => (
+            <>
+              <span aria-hidden="true" className="sm:hidden">
+                {option.shortLabel}
+              </span>
+              <span className="sr-only sm:not-sr-only">{option.label}</span>
+            </>
+          )}
+        />
+
         <div
-          role="tablist"
-          aria-label="Ranking period"
-          className="mt-8 flex border-b border-white/10"
+          role="tabpanel"
+          id={panelId("rankings", period)}
+          aria-labelledby={tabId("rankings", period)}
         >
-          {RANKING_PERIODS.map((option) => {
-            const selected = option.id === period;
-
-            return (
-              <button
-                key={option.id}
-                role="tab"
-                type="button"
-                aria-selected={selected}
-                onClick={() => setPeriod(option.id)}
-                className={cn(
-                  "font-display flex-1 border-b-4 px-5 py-4 text-center text-base font-semibold transition-colors sm:text-lg lg:px-10",
-                  selected
-                    ? "border-brand text-ink"
-                    : "text-ink-muted hover:text-ink border-transparent",
-                )}
-              >
-                <span aria-hidden="true" className="sm:hidden">
-                  {option.shortLabel}
-                </span>
-                <span className="sr-only sm:not-sr-only">{option.label}</span>
-              </button>
-            );
-          })}
-        </div>
-
-        <div className="text-ink-subtle mt-10 flex items-center justify-between rounded-[20px] border border-white/10 px-4 py-3 font-mono text-sm">
-          <span>Artist</span>
-          <div className="flex items-center gap-8">
-            <span className="hidden w-20 sm:block">Change</span>
-            <span className="hidden w-20 text-right xl:block">NFTs Sold</span>
-            <span className="w-24 text-right">Volume</span>
+          <div className="text-ink-subtle mt-10 flex items-center justify-between rounded-[20px] border border-white/10 px-4 py-3 font-mono text-sm">
+            <span>Artist</span>
+            <div className="flex items-center gap-8">
+              <span className="hidden w-20 sm:block">Change</span>
+              <span className="hidden w-20 text-right xl:block">NFTs Sold</span>
+              <span className="w-24 text-right">Volume</span>
+            </div>
           </div>
-        </div>
 
-        <ul className="mt-4 space-y-4">
-          {rows.map((row) => (
-            <li
-              key={row.name}
-              className="bg-surface flex items-center justify-between gap-4 rounded-[20px] p-4"
-            >
-              <div className="flex items-center gap-4">
-                <span className="text-ink-muted w-6 shrink-0 font-mono">{row.rank}</span>
-                <Avatar seed={row.name} className="size-10 shrink-0" />
-                <span className="font-semibold">{row.name}</span>
-              </div>
-              <div className="flex items-center gap-8">
-                <span className="hidden w-20 sm:block">
-                  <ChangeValue change={row.change} />
-                </span>
-                <span className="hidden w-20 text-right font-mono xl:block">{row.nftsSold}</span>
-                <span className="w-24 text-right font-mono text-sm">
-                  {row.volume.toFixed(2)} ETH
-                </span>
-              </div>
-            </li>
-          ))}
-        </ul>
+          <ul className="mt-4 space-y-4">
+            {rows.map((row) => (
+              <li
+                key={row.name}
+                className="bg-surface flex items-center justify-between gap-4 rounded-[20px] p-4"
+              >
+                <div className="flex items-center gap-4">
+                  <span className="text-ink-muted w-6 shrink-0 font-mono">{row.rank}</span>
+                  <Avatar seed={row.name} className="size-10 shrink-0" />
+                  <span className="font-semibold">{row.name}</span>
+                </div>
+                <div className="flex items-center gap-8">
+                  <span className="hidden w-20 sm:block">
+                    <ChangeValue change={row.change} />
+                  </span>
+                  <span className="hidden w-20 text-right font-mono xl:block">{row.nftsSold}</span>
+                  <span className="w-24 text-right font-mono text-sm">
+                    {row.volume.toFixed(2)} ETH
+                  </span>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
       </Container>
     </section>
   );
