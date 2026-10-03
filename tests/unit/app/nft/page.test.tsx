@@ -30,7 +30,7 @@ describe("NftPage", () => {
     render(<NftPage />);
 
     for (const tag of ["ANIMATION", "ILLUSTRATION", "MOON"]) {
-      expect(screen.getByText(tag)).toBeInTheDocument();
+      expect(screen.getByRole("link", { name: tag })).toHaveAttribute("href", "/marketplace");
     }
     expect(screen.getByRole("link", { name: /view on etherscan/i })).toBeInTheDocument();
     expect(screen.getByRole("link", { name: /view original/i })).toBeInTheDocument();

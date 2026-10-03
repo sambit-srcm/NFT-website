@@ -31,7 +31,10 @@ describe("Home", () => {
   it("renders the primary call to action", () => {
     render(<Home />);
 
-    expect(screen.getByRole("link", { name: /get started/i })).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: /get started/i })).toHaveAttribute(
+      "href",
+      "/create-account",
+    );
   });
 
   it("lists creators in ranked order", () => {
@@ -56,5 +59,33 @@ describe("Home", () => {
 
     const card = screen.getByRole("link", { name: "Space Walking by Animakid" });
     expect(card).toHaveTextContent("Total Sales: 34.53 ETH");
+  });
+
+  it("sends trending collection pictures to the NFT page and creators to the artist page", () => {
+    render(<Home />);
+
+    expect(screen.getByRole("link", { name: "View Dsgn Animals NFTs" })).toHaveAttribute(
+      "href",
+      "/nft",
+    );
+    expect(screen.getByRole("link", { name: "MrFox" })).toHaveAttribute("href", "/artist");
+  });
+
+  it("sends every category to the marketplace", () => {
+    render(<Home />);
+
+    for (const name of ["Art", "Music", "Virtual Worlds"]) {
+      expect(screen.getByRole("link", { name })).toHaveAttribute("href", "/marketplace");
+    }
+  });
+
+  it("links the highlight to its creator and its NFT", () => {
+    render(<Home />);
+
+    // Shroomie also owns a trending collection, so there is more than one link.
+    for (const link of screen.getAllByRole("link", { name: "Shroomie" })) {
+      expect(link).toHaveAttribute("href", "/artist");
+    }
+    expect(screen.getByRole("link", { name: /see nft/i })).toHaveAttribute("href", "/nft");
   });
 });

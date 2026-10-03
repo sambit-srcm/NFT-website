@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 
 import { Avatar } from "@/components/ui/art";
@@ -86,7 +87,7 @@ export function RankingsBoard() {
                 <div
                   key={row.name}
                   role="row"
-                  className="bg-surface flex items-center justify-between gap-4 rounded-[20px] p-4"
+                  className="bg-surface hover:bg-surface-raised relative flex items-center justify-between gap-4 rounded-[20px] p-4 transition-colors"
                 >
                   <div role="cell" className="flex items-center gap-4">
                     <span className="text-ink-muted w-6 shrink-0 font-mono">
@@ -94,7 +95,13 @@ export function RankingsBoard() {
                       {row.rank}
                     </span>
                     <Avatar seed={row.name} className="size-10 shrink-0" />
-                    <span className="font-semibold">{row.name}</span>
+                    {/* The link's clickable area is stretched over the whole row. */}
+                    <Link
+                      href="/artist"
+                      className="font-semibold after:absolute after:inset-0 after:rounded-[20px]"
+                    >
+                      {row.name}
+                    </Link>
                   </div>
                   <div role="none" className="flex items-center gap-8">
                     <span role="cell" className="hidden w-20 sm:block">

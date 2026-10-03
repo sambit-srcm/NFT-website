@@ -29,7 +29,7 @@ export function Hero() {
           </Reveal>
 
           <Reveal delay={0.16}>
-            <Button href="#signup" size="lg" icon={<RocketIcon />} className="mt-8">
+            <Button href="/create-account" size="lg" icon={<RocketIcon />} className="mt-8">
               Get Started
             </Button>
           </Reveal>
