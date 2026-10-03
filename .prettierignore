@@ -8,3 +8,5 @@ package-lock.json
 public
 *.min.js
 *.min.css
+test-results
+playwright-report
