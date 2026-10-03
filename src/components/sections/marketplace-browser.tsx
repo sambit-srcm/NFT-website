@@ -68,6 +68,8 @@ export function MarketplaceBrowser() {
           aria-labelledby={tabId("marketplace", tab)}
           className="mt-10"
         >
+          {/* Heading for this tab, for screen readers. */}
+          <h2 className="sr-only">{MARKETPLACE_TABS.find((item) => item.id === tab)?.label}</h2>
           {listings.length === 0 ? (
             <p className="text-ink-subtle py-16 text-center text-lg">
               No NFTs match “{query}”. Try a different search.
