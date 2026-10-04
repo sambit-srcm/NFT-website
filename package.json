@@ -1,6 +1,8 @@
 {
   "name": "nft-website",
   "version": "0.1.0",
+  "description": "NFT marketplace website built with Next.js, TypeScript and Tailwind CSS.",
+  "license": "MIT",
   "private": true,
   "scripts": {
     "dev": "next dev",
