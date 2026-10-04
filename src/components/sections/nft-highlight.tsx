@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import { Art, Avatar } from "@/components/ui/art";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
@@ -19,10 +21,13 @@ export function NftHighlight() {
 
       <Container>
         <Reveal className="grid gap-6 [grid-template-areas:'chip'_'heading'_'timer'_'button'] md:grid-cols-[1fr_auto] md:items-center md:gap-8 md:[grid-template-areas:'chip_timer'_'heading_timer'_'button_timer']">
-          <div className="bg-surface inline-flex w-fit items-center gap-3 rounded-full py-2 pr-5 pl-2 [grid-area:chip]">
+          <Link
+            href="/artist"
+            className="bg-surface hover:bg-surface-raised inline-flex w-fit items-center gap-3 rounded-full py-2 pr-5 pl-2 transition-colors [grid-area:chip]"
+          >
             <Avatar seed={FEATURED.creator} className="size-6" />
             <span className="font-medium">{FEATURED.creator}</span>
-          </div>
+          </Link>
 
           <h2 className="font-display text-[32px] font-semibold [grid-area:heading] sm:text-[42px] xl:text-[51px]">
             {FEATURED.name}
@@ -36,7 +41,7 @@ export function NftHighlight() {
           </div>
 
           <Button
-            href="/marketplace"
+            href="/nft"
             variant="white"
             icon={<EyeIcon className="text-brand" />}
             className="w-fit [grid-area:button]"

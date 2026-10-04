@@ -1,0 +1,19 @@
+version: 2
+updates:
+  # Weekly pull requests for outdated or vulnerable npm packages.
+  - package-ecosystem: npm
+    directory: /
+    target-branch: development
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+    groups:
+      minor-and-patch:
+        update-types: [minor, patch]
+
+  # Keep the GitHub Actions used in CI up to date too.
+  - package-ecosystem: github-actions
+    directory: /
+    target-branch: development
+    schedule:
+      interval: weekly

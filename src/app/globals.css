@@ -12,17 +12,17 @@
   --color-surface-raised: #434343;
 
   /* Brand */
-  --color-brand: #a259ff;
+  --color-brand: #8b3dff;
   /* Figma has no hover state for the brand color, so this is --color-brand darkened ~12%. */
-  --color-brand-strong: #8f4ee0;
+  --color-brand-strong: #7934df;
 
   /* Text */
   --color-ink: #ffffff;
-  --color-ink-muted: #858584;
+  --color-ink-muted: #a7a7a6;
   --color-ink-subtle: #cccccc;
 
   /* Status */
-  --color-positive: #00ac4f;
+  --color-positive: #20d46b;
 
   /* Typography */
   --font-display: var(--font-work-sans), ui-sans-serif, system-ui, sans-serif;
@@ -50,6 +50,11 @@
   :focus-visible {
     outline: 2px solid var(--color-brand);
     outline-offset: 3px;
+  }
+
+  /* Skip-link target. No focus ring. */
+  [tabindex="-1"]:focus {
+    outline: none;
   }
 
   /*

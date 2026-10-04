@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function ArtistPage() {
   return (
-    <main className="flex-1">
+    <main id="main-content" tabIndex={-1} className="flex-1">
       <ArtistProfile />
       <ArtistPortfolio />
     </main>

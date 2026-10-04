@@ -49,7 +49,7 @@ export const Field = forwardRef<HTMLInputElement, FieldProps>(function Field(
       </div>
 
       {error ? (
-        <p id={errorId} className="mt-2 text-sm text-red-400">
+        <p id={errorId} role="alert" className="mt-2 text-sm text-red-300">
           {error}
         </p>
       ) : null}

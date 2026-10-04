@@ -24,7 +24,7 @@ export function BrowseCategories() {
             return (
               <Reveal as="li" key={category.id} delay={Math.min(index, 7) * 0.05}>
                 <Link
-                  href={`#${category.id}`}
+                  href="/marketplace"
                   className={cn(
                     "bg-surface hover:bg-surface-raised block overflow-hidden rounded-[20px] transition duration-200",
                     squeezeEffect,

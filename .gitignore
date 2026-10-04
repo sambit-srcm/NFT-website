@@ -42,3 +42,7 @@ next-env.d.ts
 
 # keep the checked-in template
 !.env.example
+
+# playwright
+/test-results/
+/playwright-report/

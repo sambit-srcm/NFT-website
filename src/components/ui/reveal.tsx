@@ -1,7 +1,7 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
 import type { ReactNode } from "react";
+import { motion } from "framer-motion";
 import type { Variants } from "framer-motion";
 
 import { fadeUp, viewportOnce } from "@/lib/motion";
@@ -15,7 +15,7 @@ type RevealProps = {
   as?: "div" | "section" | "li" | "article" | "header" | "footer";
 };
 
-/** Reduced motion renders the final state immediately instead of animating. */
+/** Fades in when it scrolls into view. */
 export function Reveal({
   children,
   className,
@@ -23,13 +23,7 @@ export function Reveal({
   variants = fadeUp,
   as = "div",
 }: RevealProps) {
-  const reduceMotion = useReducedMotion();
   const MotionTag = motion[as];
-
-  if (reduceMotion) {
-    const Tag = as;
-    return <Tag className={className}>{children}</Tag>;
-  }
 
   return (
     <MotionTag

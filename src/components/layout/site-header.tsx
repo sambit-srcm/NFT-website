@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 
 import { Button, squeezeEffect } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
@@ -12,7 +12,6 @@ import { NAV_LINKS } from "@/constants/nav";
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
-  const reduceMotion = useReducedMotion();
 
   useEffect(() => {
     if (!open) return;
@@ -80,9 +79,9 @@ export function SiteHeader() {
           <motion.div
             id="mobile-menu"
             key="mobile-menu"
-            initial={reduceMotion ? false : { opacity: 0, y: -12 }}
+            initial={{ opacity: 0, y: -12 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={reduceMotion ? { opacity: 0 } : { opacity: 0, y: -12 }}
+            exit={{ opacity: 0, y: -12 }}
             transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
             className="bg-surface absolute inset-x-0 top-full border-t border-white/5 lg:hidden"
           >

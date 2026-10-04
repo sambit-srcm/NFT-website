@@ -23,3 +23,9 @@ export const stagger = (staggerChildren = 0.08, delayChildren = 0): Variants => 
 
 /** Viewport config shared by scroll-triggered sections. */
 export const viewportOnce = { once: true, amount: 0.2 } as const;
+
+/** How far the hero card turns, in degrees. */
+export const SWAY = {
+  angle: 18,
+  transition: { duration: 8, ease: "easeInOut", repeat: Infinity, repeatType: "mirror" },
+} satisfies { angle: number; transition: Transition };
