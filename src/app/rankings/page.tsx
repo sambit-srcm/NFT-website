@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function RankingsPage() {
   return (
-    <main className="flex-1">
+    <main id="main-content" tabIndex={-1} className="flex-1">
       <RankingsBoard />
     </main>
   );

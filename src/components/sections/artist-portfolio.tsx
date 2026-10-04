@@ -1,59 +1,46 @@
 "use client";
 
 import { useState } from "react";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
 
 import { CollectionCard } from "@/components/ui/collection-card";
 import { Container } from "@/components/ui/container";
 import { NftCard } from "@/components/ui/nft-card";
-import { cn } from "@/lib/cn";
+import { TabList, panelId, tabId } from "@/components/ui/tabs";
 import { ARTIST_COLLECTIONS, ARTIST_PORTFOLIO, ARTIST_TABS } from "@/lib/data";
 import type { ArtistTabId } from "@/lib/data";
 
 /** Artist page's Created/Owned/Collection tabs and the grid underneath them. */
 export function ArtistPortfolio() {
   const [active, setActive] = useState<ArtistTabId>("created");
-  const reduceMotion = useReducedMotion();
 
   return (
     <section className="py-section">
       <Container>
-        <div role="tablist" aria-label="Artist portfolio" className="flex border-b border-white/10">
-          {ARTIST_TABS.map((tab) => {
-            const selected = tab.id === active;
-
-            return (
-              <button
-                key={tab.id}
-                role="tab"
-                id={`tab-${tab.id}`}
-                type="button"
-                aria-selected={selected}
-                aria-controls={`panel-${tab.id}`}
-                onClick={() => setActive(tab.id)}
-                className={cn(
-                  "font-display flex-1 border-b-4 px-2 py-4 text-base font-semibold transition-colors sm:text-lg lg:flex-none lg:px-10",
-                  selected
-                    ? "border-brand text-ink"
-                    : "text-ink-muted hover:text-ink border-transparent",
-                )}
-              >
-                {tab.label}
-                <span className="text-ink-muted ml-2 font-mono text-sm">{tab.count}</span>
-              </button>
-            );
-          })}
-        </div>
+        <TabList
+          label="Artist portfolio"
+          idPrefix="artist"
+          tabs={ARTIST_TABS}
+          active={active}
+          onChange={setActive}
+          tabClassName="px-2 lg:flex-none"
+          renderTab={(tab) => (
+            <>
+              {tab.label}
+              <span className="text-ink-muted ml-2 font-mono text-sm">{tab.count}</span>
+            </>
+          )}
+        />
 
         <div
           role="tabpanel"
-          id={`panel-${active}`}
-          aria-labelledby={`tab-${active}`}
+          id={panelId("artist", active)}
+          aria-labelledby={tabId("artist", active)}
           className="mt-10"
         >
           <motion.ul
             key={active}
-            initial={reduceMotion ? false : { opacity: 0, y: 12 }}
+            initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
             className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3"

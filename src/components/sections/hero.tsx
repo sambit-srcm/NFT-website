@@ -1,13 +1,13 @@
 import Link from "next/link";
 
 import { Art, Avatar } from "@/components/ui/art";
-import { Button, squeezeEffect } from "@/components/ui/button";
+import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { CountUp } from "@/components/ui/count-up";
 import { Reveal } from "@/components/ui/reveal";
+import { TiltCard } from "@/components/ui/tilt-card";
 import { RocketIcon } from "@/components/icons";
-import { cn } from "@/lib/cn";
-import { STATS } from "@/lib/data";
+import { HERO_NFT, STATS } from "@/lib/data";
 
 /** The homepage's top banner: headline, stat counters, and a featured NFT card. */
 export function Hero() {
@@ -29,7 +29,7 @@ export function Hero() {
           </Reveal>
 
           <Reveal delay={0.16}>
-            <Button href="#signup" size="lg" icon={<RocketIcon />} className="mt-8">
+            <Button href="/create-account" size="lg" icon={<RocketIcon />} className="mt-8">
               Get Started
             </Button>
           </Reveal>
@@ -54,23 +54,28 @@ export function Hero() {
         </div>
 
         <Reveal delay={0.12} className="w-full">
-          <Link
-            href="/artist"
-            aria-label="Space Walking by Animakid"
-            className={cn(
-              "bg-surface hover:bg-surface-raised block overflow-hidden rounded-[20px] transition duration-200",
-              squeezeEffect,
-            )}
-          >
-            <Art seed="space-walking" rounded="rounded-none" className="aspect-[4/3] w-full" />
-            <div className="p-5">
-              <p className="font-display text-[22px] font-semibold">Space Walking</p>
-              <div className="mt-3 flex items-center gap-3">
-                <Avatar seed="animakid" className="size-6" />
-                <span className="text-ink-subtle">Animakid</span>
+          <TiltCard>
+            <Link
+              href="/artist"
+              aria-label={`${HERO_NFT.name} by ${HERO_NFT.creator}`}
+              className="block rounded-[20px] p-4 transition-colors duration-200 hover:bg-white/[0.03] sm:p-5"
+            >
+              <Art seed="space-walking" rounded="rounded-[14px]" className="aspect-[4/3] w-full" />
+              <div className="px-1 pt-5">
+                <p className="font-display text-[22px] font-semibold">{HERO_NFT.name}</p>
+                <div className="mt-3 flex items-center gap-3">
+                  <Avatar seed={HERO_NFT.creator} className="size-11 shrink-0" />
+                  <div>
+                    <p className="font-semibold">{HERO_NFT.creator}</p>
+                    <p className="text-sm">
+                      <span className="text-ink-muted">Total Sales: </span>
+                      <span className="font-mono">{HERO_NFT.totalSales.toFixed(2)} ETH</span>
+                    </p>
+                  </div>
+                </div>
               </div>
-            </div>
-          </Link>
+            </Link>
+          </TiltCard>
         </Reveal>
       </Container>
     </section>

@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it } from "vitest";
 
@@ -15,14 +15,17 @@ describe("RankingsPage", () => {
     render(<RankingsPage />);
 
     for (const label of ["Artist", "Change", "NFTs Sold", "Volume"]) {
-      expect(screen.getByText(label)).toBeInTheDocument();
+      expect(screen.getByRole("columnheader", { name: label })).toBeInTheDocument();
     }
   });
 
   it("ranks twenty creators", () => {
     render(<RankingsPage />);
 
-    expect(screen.getAllByRole("listitem")).toHaveLength(20);
+    const table = screen.getByRole("table", { name: "Creator rankings" });
+
+    // One header row plus twenty creators.
+    expect(within(table).getAllByRole("row")).toHaveLength(21);
   });
 
   it("opens on Today", () => {
@@ -39,5 +42,15 @@ describe("RankingsPage", () => {
 
     expect(screen.getByRole("tab", { name: "All Time" })).toHaveAttribute("aria-selected", "true");
     expect(screen.getByRole("tab", { name: "Today" })).toHaveAttribute("aria-selected", "false");
+  });
+
+  it("links every creator to the artist page", () => {
+    render(<RankingsPage />);
+
+    const table = screen.getByRole("table", { name: "Creator rankings" });
+    const links = within(table).getAllByRole("link");
+
+    expect(links).toHaveLength(20);
+    for (const link of links) expect(link).toHaveAttribute("href", "/artist");
   });
 });

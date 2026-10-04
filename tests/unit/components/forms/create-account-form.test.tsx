@@ -54,6 +54,7 @@ describe("CreateAccountForm", () => {
     const email = screen.getByLabelText("Email Address");
     expect(email).toHaveAttribute("aria-invalid", "true");
     expect(email).toHaveAccessibleDescription("Enter a valid email address.");
+    expect(screen.getByRole("alert")).toHaveTextContent("Enter a valid email address.");
   });
 
   it("rejects a password shorter than the minimum", async () => {
@@ -74,6 +75,33 @@ describe("CreateAccountForm", () => {
     await user.click(screen.getByRole("button", { name: /create account/i }));
 
     expect(screen.getByText("Passwords do not match.")).toBeInTheDocument();
+  });
+
+  it("treats a username of only spaces as empty", async () => {
+    const user = userEvent.setup();
+    render(<CreateAccountForm />);
+
+    await fill(user, { Username: "   " });
+    await user.click(screen.getByRole("button", { name: /create account/i }));
+
+    expect(screen.getByText("Username is required.")).toBeInTheDocument();
+  });
+
+  it("removes spaces around the username and email", async () => {
+    const user = userEvent.setup();
+    render(<CreateAccountForm />);
+
+    await fill(user, { Username: "  satoshi  ", "Email Address": "bad email  " });
+    await user.click(screen.getByRole("button", { name: /create account/i }));
+
+    expect(screen.getByLabelText("Username")).toHaveValue("satoshi");
+    expect(screen.getByLabelText("Email Address")).toHaveValue("bad email");
+  });
+
+  it("caps typed username length at the shared maximum", () => {
+    render(<CreateAccountForm />);
+
+    expect(screen.getByLabelText("Username")).toHaveAttribute("maxLength", "30");
   });
 
   it("clears a field error once that field is edited", async () => {

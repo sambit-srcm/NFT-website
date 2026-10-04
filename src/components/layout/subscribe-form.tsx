@@ -1,18 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import type { FormEvent } from "react";
 
 import { Button } from "@/components/ui/button";
+import { MAX_EMAIL_LENGTH, isValidEmail } from "@/constants/validation";
 import { cn } from "@/lib/cn";
 
-/**
- * Newsletter capture with local-only validation (no backend yet).
- *
- * The email field and button split on mobile and merge into one pill from
- * `sm:` up by default. Pass `merged` to keep the pill at every size — used
- * in the footer, which has no room for stacked fields.
- */
+/** Newsletter signup. Pass to keep the email and button in one pill. */
 export function SubscribeForm({
   className,
   merged = false,
@@ -21,17 +16,45 @@ export function SubscribeForm({
   merged?: boolean;
 }) {
   const [email, setEmail] = useState("");
+  const [error, setError] = useState<string | undefined>();
   const [status, setStatus] = useState<"idle" | "done">("idle");
+  const inputRef = useRef<HTMLInputElement>(null);
+  const errorId = "subscribe-email-error";
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    if (!email) return;
+
+    const cleaned = email.trim();
+    setEmail(cleaned);
+
+    if (!cleaned) {
+      setStatus("idle");
+      setError("Email address is required.");
+      inputRef.current?.focus();
+      return;
+    }
+
+    if (cleaned.length > MAX_EMAIL_LENGTH) {
+      setStatus("idle");
+      setError(`Email address must be ${MAX_EMAIL_LENGTH} characters or fewer.`);
+      inputRef.current?.focus();
+      return;
+    }
+
+    if (!isValidEmail(cleaned)) {
+      setStatus("idle");
+      setError("Enter a valid email address.");
+      inputRef.current?.focus();
+      return;
+    }
+
+    setError(undefined);
     setStatus("done");
     setEmail("");
   }
 
   return (
-    <form onSubmit={handleSubmit} className={cn("w-full", className)}>
+    <form onSubmit={handleSubmit} noValidate className={cn("w-full", className)}>
       <div
         className={cn(
           "flex flex-col gap-3",
@@ -45,14 +68,22 @@ export function SubscribeForm({
         </label>
         <input
           id="subscribe-email"
+          ref={inputRef}
           type="email"
-          required
+          maxLength={MAX_EMAIL_LENGTH}
           value={email}
-          onChange={(event) => setEmail(event.target.value)}
+          aria-invalid={error ? true : undefined}
+          aria-describedby={error ? errorId : undefined}
+          onChange={(event) => {
+            setEmail(event.target.value);
+            if (error) setError(undefined);
+            if (status === "done") setStatus("idle");
+          }}
           placeholder="Enter your email here"
           className={cn(
             "text-canvas w-full rounded-[20px] px-5 py-3 outline-none placeholder:text-neutral-500",
             merged ? "rounded-none bg-transparent" : "bg-ink sm:rounded-none sm:bg-transparent",
+            error && "ring-2 ring-red-400",
           )}
         />
         <Button
@@ -66,6 +97,11 @@ export function SubscribeForm({
           Subscribe
         </Button>
       </div>
+      {error ? (
+        <p id={errorId} role="alert" className="mt-3 text-sm text-red-300">
+          {error}
+        </p>
+      ) : null}
       <p
         role="status"
         aria-live="polite"

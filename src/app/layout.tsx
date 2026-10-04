@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Space_Mono, Work_Sans } from "next/font/google";
+import { MotionProvider } from "@/components/layout/motion-provider";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
 import "./globals.css";
@@ -27,9 +28,17 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className={`${workSans.variable} ${spaceMono.variable} h-full antialiased`}>
       <body className="bg-canvas text-ink flex min-h-full flex-col">
-        <SiteHeader />
-        {children}
-        <SiteFooter />
+        <a
+          href="#main-content"
+          className="bg-brand text-ink sr-only z-[60] rounded-[20px] px-5 py-3 font-semibold focus:not-sr-only focus:fixed focus:top-4 focus:left-4"
+        >
+          Skip to content
+        </a>
+        <MotionProvider>
+          <SiteHeader />
+          {children}
+          <SiteFooter />
+        </MotionProvider>
       </body>
     </html>
   );

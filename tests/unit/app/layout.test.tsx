@@ -27,4 +27,17 @@ describe("RootLayout", () => {
     expect(screen.getByText("Page content")).toBeInTheDocument();
     expect(screen.getByRole("contentinfo")).toBeInTheDocument();
   });
+
+  it("has a skip link that jumps to the main content", () => {
+    render(
+      <RootLayout params={Promise.resolve({})}>
+        <main id="main-content">Page content</main>
+      </RootLayout>,
+    );
+
+    expect(screen.getByRole("link", { name: /skip to content/i })).toHaveAttribute(
+      "href",
+      "#main-content",
+    );
+  });
 });

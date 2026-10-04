@@ -19,6 +19,14 @@ export const COLLECTIONS: Collection[] = [
   { id: "disco-machines", name: "Disco Machines", creator: "BeKind2Robots", more: 1025 },
 ];
 
+// The spinning card in the homepage's hero banner.
+export const HERO_NFT = {
+  name: "Space Walking",
+  creator: "Animakid",
+  /** Creator's total sales in ETH. */
+  totalSales: 34.53,
+};
+
 // The three stat counters under the homepage's hero banner.
 export const STATS = [
   { value: 240, suffix: "k+", label: "Total Sale" },

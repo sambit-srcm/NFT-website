@@ -8,10 +8,17 @@ export default defineConfig({
     environment: "jsdom",
     globals: true,
     setupFiles: ["./vitest.setup.ts"],
-    include: ["src/**/*.{test,spec}.{ts,tsx}"],
+    include: ["tests/unit/**/*.{test,spec}.{ts,tsx}"],
     coverage: {
       reporter: ["text", "lcov"],
-      include: ["src/**"],
+      include: ["src/**/*.{ts,tsx}"],
+      // CI fails if coverage drops below these numbers.
+      thresholds: {
+        statements: 90,
+        branches: 85,
+        functions: 90,
+        lines: 90,
+      },
     },
   },
   resolve: {

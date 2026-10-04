@@ -69,8 +69,13 @@ export function NftDetail() {
               <h2 className="text-ink-subtle font-mono text-sm">Tags</h2>
               <ul className="mt-3 flex flex-wrap gap-3">
                 {nft.tags.map((tag) => (
-                  <li key={tag} className="bg-surface rounded-[20px] px-6 py-3 font-semibold">
-                    {tag}
+                  <li key={tag}>
+                    <Link
+                      href="/marketplace"
+                      className="bg-surface hover:bg-surface-raised block rounded-[20px] px-6 py-3 font-semibold transition-colors"
+                    >
+                      {tag}
+                    </Link>
                   </li>
                 ))}
               </ul>

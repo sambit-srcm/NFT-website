@@ -73,7 +73,7 @@ Open [http://localhost:3000](http://localhost:3000).
 | `npm run typecheck`     | Generate route types, then `tsc --noEmit`    |
 | `npm run test`          | Run the test suite once                      |
 | `npm run test:watch`    | Watch mode                                   |
-| `npm run test:coverage` | Tests with a coverage report                 |
+| `npm run test:coverage` | Tests with coverage, fails below the minimum |
 
 ## Project structure
 
@@ -81,17 +81,30 @@ Open [http://localhost:3000](http://localhost:3000).
 .
 ├── .github/
 │   ├── workflows/
-│   │   ├── ci.yml           # lint, format, typecheck, test, build, commitlint
+│   │   ├── ci.yml           # lint, format, typecheck, audit, test + coverage, build, commitlint
 │   │   └── gitleaks.yml     # secret scanning
+│   ├── dependabot.yml       # weekly dependency update PRs
 │   ├── CODEOWNERS           # required reviewers
 │   └── pull_request_template.md
 ├── .husky/
 │   ├── pre-commit           # lint-staged + gitleaks
 │   ├── commit-msg           # commitlint
 │   └── pre-push             # typecheck + tests
-├── src/app/                 # App Router routes, layouts, styles
+├── src/
+│   ├── app/                 # Routes, root layout, error and 404 pages, global styles
+│   ├── components/
+│   │   ├── forms/           # Forms with their validation
+│   │   ├── layout/          # Header, footer and shared page shells
+│   │   ├── sections/        # Page sections, one per block of the design
+│   │   └── ui/              # Small reusable pieces (buttons, fields, tabs, cards)
+│   ├── constants/           # Shared values like nav links and validation limits
+│   └── lib/                 # Helpers and the mock data used until there is a backend
+├── tests/
+│   ├── unit/                # Vitest tests, same folder layout as src/
+│   └── a11y/                # Playwright + axe accessibility tests
 ├── public/                  # Static assets
 ├── .gitleaks.toml           # Secret-scanning rules and allowlist
+├── next.config.ts           # Security headers
 ├── commitlint.config.mjs
 ├── eslint.config.mjs
 ├── prettier.config.mjs
@@ -120,12 +133,12 @@ git commit -m "docs: document env variables"
 
 ### What runs when
 
-| Moment       | Checks                                                              |
-| ------------ | ------------------------------------------------------------------- |
-| `git commit` | `lint-staged` (ESLint + Prettier on staged files), Gitleaks         |
-| commit msg   | Commitlint                                                          |
-| `git push`   | `typecheck`, `test`                                                 |
-| PR / push    | Full CI: lint, format, typecheck, test, build, commitlint, Gitleaks |
+| Moment       | Checks                                                                                    |
+| ------------ | ----------------------------------------------------------------------------------------- |
+| `git commit` | `lint-staged` (ESLint + Prettier on staged files), Gitleaks                               |
+| commit msg   | Commitlint                                                                                |
+| `git push`   | `typecheck`, `test`                                                                       |
+| PR / push    | Full CI: lint, format, typecheck, audit, tests with coverage, build, commitlint, Gitleaks |
 
 To bypass hooks in a genuine emergency, use `git commit --no-verify`. CI will still catch the
 problem, so prefer fixing it locally.
@@ -145,10 +158,43 @@ Both branches require these checks to pass before merging:
 - `Lint, format & types`
 - `Tests`
 - `Build`
+- `Accessibility`
 - `Commit messages`
 - `Gitleaks`
 
 Branches must also be up to date with the base branch before merging.
+
+## Testing
+
+Unit tests live in `tests/unit/`, in the same folder layout as `src/`. For example, the test for
+`src/components/ui/tabs.tsx` is `tests/unit/components/ui/tabs.test.tsx`. CI runs them with
+coverage and fails if coverage drops below 90% statements, functions and lines, or 85% branches.
+The limits live in [`vitest.config.mts`](vitest.config.mts).
+
+Accessibility tests live in `tests/a11y/` and run with `npm run test:a11y`. They build the site,
+scan every page with axe on desktop and mobile, and check pages stay visible with reduced motion.
+
+## Security
+
+- **Headers.** [`next.config.ts`](next.config.ts) sends `X-Content-Type-Options`, `X-Frame-Options`,
+  `Referrer-Policy`, `Permissions-Policy` and `Strict-Transport-Security` on every page, and turns
+  off the `X-Powered-By` header. A full Content Security Policy is not set yet because it needs
+  a per-request nonce.
+- **Dependencies.** CI runs `npm audit` on production packages and fails on high or critical
+  issues. Dependabot opens weekly update PRs against `development`.
+
+## Accessibility
+
+- A "Skip to content" link is the first thing keyboard users reach on every page.
+- Form errors are linked to their inputs with `aria-describedby` and `aria-invalid`, announced with
+  `role="alert"`, and the first invalid field gets focus.
+- Tabs follow the WAI-ARIA tabs pattern, so arrow keys, Home and End move between them.
+- The rankings leaderboard is exposed to screen readers as a table with column headers.
+- CI runs an axe-core Playwright audit against the main routes on desktop and mobile.
+
+## License
+
+This project is released under the [MIT License](LICENSE).
 
 ## Secret scanning
 
